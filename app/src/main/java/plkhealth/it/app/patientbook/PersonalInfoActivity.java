@@ -22,7 +22,7 @@ public class PersonalInfoActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        setTitle("ข้อมูลส่วนตัว");
+        setTitle("ข้อมูลส่วนตัว.");
 
         pref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         String name = pref.getString("name", "");
