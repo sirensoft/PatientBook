@@ -9,10 +9,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+
 public class PersonalInfoActivity extends AppCompatActivity {
 
-    SharedPreferences pref ;
+    //SharedPreferences pref ;
     Toolbar toolbar;
+    MyGlobals myGlobal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,11 +24,13 @@ public class PersonalInfoActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        setTitle("ข้อมูลส่วนตัว.");
+        setTitle("ข้อมูลส่วนตัว");
+        myGlobal = new MyGlobals(getApplicationContext());
 
-        pref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        String name = pref.getString("name", "");
-        Toast.makeText(getApplicationContext(),name,Toast.LENGTH_SHORT).show();
+        //pref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        //String patient_cid = pref.getString("patient_cid", "");
+        String patient_cid =myGlobal.getPatientCid();
+        Toast.makeText(getApplicationContext(),patient_cid,Toast.LENGTH_SHORT).show();
     }
 
     @Override

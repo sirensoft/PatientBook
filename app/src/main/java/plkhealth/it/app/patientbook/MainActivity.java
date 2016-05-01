@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         SharedPreferences.Editor editor = pref.edit();
-        editor.putString("name","อุเทน");
+
         editor.putBoolean("patient_activated",true);
         editor.apply();
 
