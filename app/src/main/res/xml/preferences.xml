@@ -7,13 +7,14 @@
     <EditTextPreference
         android:key="patient_cid"
         android:maxLength="13"
-        android:minLines="1"
+        android:singleLine="true"
         android:summary="ตั้งค่าเลขบัตรประชาชน 13 หลักของผู้ป่วย/ผู้ใช้บริการ"
         android:title="Patient CID"></EditTextPreference>
+
     <EditTextPreference
         android:key="patient_key"
         android:maxLength="255"
-        android:minLines="1"
+        android:singleLine="true"
         android:summary="ตั้งค่า Key ของผู้ป่วย/ผู้ใช้บริการ"
         android:title="Patient KEY"></EditTextPreference>
 
