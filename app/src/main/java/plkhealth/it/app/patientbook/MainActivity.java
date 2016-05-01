@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 progress = ProgressDialog.show(MainActivity.this, "โปรดรอสักครู่",
                         "เรียกข้อมูลใหม่...", true);
-                progress.setCancelable(true);
+                progress.setCancelable(false);
                 new Thread(new Runnable() {
                     @Override
                     public void run()
