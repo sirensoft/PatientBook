@@ -27,10 +27,11 @@
         </activity>
         <activity
             android:name=".PersonalInfoActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".AdminLoginActivity"
-            android:label="@string/title_activity_admin_login"></activity>
+            android:label="@string/title_activity_admin_login" />
+        <activity android:name=".AdminSettingActivity"></activity>
     </application>
 
 </manifest>

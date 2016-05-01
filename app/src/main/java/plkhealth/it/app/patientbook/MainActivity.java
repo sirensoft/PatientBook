@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        final View viewParent = findViewById(R.id.myCoordinatorLayout);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setLogo(R.mipmap.ic_launcher);
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
         SharedPreferences.Editor editor = pref.edit();
         editor.putString("name","อุเทน");
+        editor.putBoolean("patient_activated",true);
         editor.apply();
 
 
@@ -61,6 +63,12 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                boolean patient_activated =  pref.getBoolean("patient_activated",false);
+                if(!patient_activated){
+                    Snackbar snackbar = Snackbar.make(viewParent, "ไม่ได้รับอนุญาต", Snackbar.LENGTH_LONG);
+                    snackbar.show();
+                    return;
+                }
                 progress = ProgressDialog.show(MainActivity.this, "โปรดรอสักครู่",
                         "เรียกข้อมูลใหม่...", true);
                 progress.setCancelable(true);
