@@ -253,6 +253,29 @@
 
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
+               android:orientation="vertical"
+               >
+
+               <ImageButton
+                   android:id="@+id/btn_lab_result"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="center_horizontal"
+                   android:background="#00000000"
+                   android:src="@mipmap/ic_launcher" />
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="center_horizontal"
+                   android:padding="2dip"
+                   android:text="ผลแล็บ" />
+           </LinearLayout>
+
+           <LinearLayout
+
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
                android:orientation="vertical">
 
                <ImageButton
@@ -271,27 +294,7 @@
            </LinearLayout>
 
 
-           <LinearLayout
 
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:orientation="vertical"
-               >
-
-               <ImageButton
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_gravity="center_horizontal"
-                   android:background="#00000000"
-                   android:src="@mipmap/ic_launcher" />
-
-               <TextView
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_gravity="center_horizontal"
-                   android:padding="2dip"
-                   android:text="เกี่ยวกับ" />
-           </LinearLayout>
 
 
        </TableRow>

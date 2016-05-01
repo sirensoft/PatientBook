@@ -57,6 +57,11 @@ public class MainActivity extends AppCompatActivity {
         badge3.setText("N");
         badge3.show();
 
+        View btn_lab_result = findViewById(R.id.btn_lab_result);
+        BadgeView badge4 = new BadgeView(this,btn_lab_result);
+        badge4.setText("N");
+        badge4.show();
+
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
