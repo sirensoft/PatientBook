@@ -19,7 +19,10 @@ import android.widget.Toast;
 
 import com.readystatesoftware.viewbadger.BadgeView;
 
+
+
 public class MainActivity extends AppCompatActivity {
+
 
     ProgressDialog progress;
     SharedPreferences pref ;
@@ -101,6 +104,8 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+
 
 
 
