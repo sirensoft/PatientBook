@@ -1,28 +1,21 @@
 package plkhealth.it.app.patientbook;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
+import android.view.View;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.readystatesoftware.viewbadger.BadgeView;
-
-import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -32,35 +25,7 @@ public class MainActivity extends AppCompatActivity {
     ProgressDialog progress;
     SharedPreferences pref ;
 
-    public  void setBadge(Context context, int count) {
-        String launcherClassName = getLauncherClassName(context);
-        if (launcherClassName == null) {
-            return;
-        }
-        Intent intent = new Intent("android.intent.action.BADGE_COUNT_UPDATE");
-        intent.putExtra("badge_count", count);
-        intent.putExtra("badge_count_package_name", context.getPackageName());
-        intent.putExtra("badge_count_class_name", launcherClassName);
-        context.sendBroadcast(intent);
-    }
-
-    public  String getLauncherClassName(Context context) {
-
-        PackageManager pm = context.getPackageManager();
-
-        Intent intent = new Intent(Intent.ACTION_MAIN);
-        intent.addCategory(Intent.CATEGORY_LAUNCHER);
-
-        List<ResolveInfo> resolveInfos = pm.queryIntentActivities(intent, 0);
-        for (ResolveInfo resolveInfo : resolveInfos) {
-            String pkgName = resolveInfo.activityInfo.applicationInfo.packageName;
-            if (pkgName.equalsIgnoreCase(context.getPackageName())) {
-                String className = resolveInfo.activityInfo.name;
-                return className;
-            }
-        }
-        return null;
-    }
+    MyGlobals myGlobal;
 
 
 
@@ -74,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         toolbar.setLogo(R.mipmap.ic_launcher);
         toolbar.setTitle(getResources().getText(R.string.app_title));
         pref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        setBadge(getApplicationContext(),2);
+
 
         SharedPreferences.Editor editor = pref.edit();
 
@@ -142,7 +107,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        myGlobal = new MyGlobals(getApplicationContext());
+        myGlobal.setBadge(getApplicationContext(),0);
 
 
 
