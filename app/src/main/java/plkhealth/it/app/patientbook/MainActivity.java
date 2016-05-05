@@ -143,4 +143,9 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void  btnDoctorVisit_Click(View view){
+        Intent intent = new Intent(this,DoctorLoginActivity.class);
+        startActivity(intent);
+    }
+
 }

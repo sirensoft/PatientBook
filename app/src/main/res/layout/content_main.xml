@@ -106,7 +106,7 @@
                    android:layout_height="wrap_content"
                    android:layout_gravity="center_horizontal"
                    android:padding="2dip"
-                   android:text="หมอนัด(N)" />
+                   android:text="หมอนัด" />
            </LinearLayout>
 
            <LinearLayout
@@ -174,7 +174,7 @@
                    android:layout_height="wrap_content"
                    android:layout_gravity="center_horizontal"
                    android:padding="2dip"
-                   android:text="คำแนะนำ" />
+                   android:text="หมอแนะนำ" />
            </LinearLayout>
 
            <LinearLayout
@@ -292,6 +292,39 @@
                    android:padding="2dip"
                    android:text="บันทึกตนเอง" />
            </LinearLayout>
+
+
+
+
+
+       </TableRow>
+
+       <TableRow android:paddingBottom="15dp">
+
+
+           <LinearLayout
+
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:orientation="vertical">
+
+               <ImageButton
+                   android:onClick="btnDoctorVisit_Click"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="center_horizontal"
+                   android:background="#00000000"
+                   android:src="@mipmap/ic_launcher" />
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="center_horizontal"
+                   android:padding="2dip"
+                   android:text="หมอมาเยี่ยม" />
+           </LinearLayout>
+
+
 
 
 

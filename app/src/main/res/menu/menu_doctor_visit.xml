@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="plkhealth.it.app.patientbook.DoctorVisitActivity">
+    <item
+        android:id="@+id/mnu_doctor_visit_save"
+        android:orderInCategory="100"
+        android:title="บันทึก"
+        app:showAsAction="always" />
+</menu>

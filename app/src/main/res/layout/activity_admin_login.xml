@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:text="ผู้ดูแลระบบ"
-        android:textColor="#ff7aff24"
+        android:textColor="#e91811"
         android:textSize="35dp" />
 
     <EditText
