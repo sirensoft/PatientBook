@@ -13,326 +13,265 @@
    tools:showIn="@layout/activity_main">
 
 
-   <TableLayout
-       android:layout_width="match_parent"
-       android:layout_height="match_parent"
-       android:stretchColumns="*">
-
-
-       <TableRow android:paddingBottom="15dp">
-
-           <LinearLayout
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:orientation="vertical">
-
-               <ImageButton
-                   android:id="@+id/btn_personal_info"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_gravity="center_horizontal"
-                   android:background="#00000000"
-                   android:onClick="btnPersonalInfo_Click"
-                   android:src="@mipmap/ic_launcher" />
-
-               <TextView
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_gravity="center_horizontal"
-                   android:padding="2dip"
-                   android:text="ข้อมูลส่วนตัว" />
-           </LinearLayout>
-
-           <LinearLayout
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:orientation="vertical">
-
-               <ImageButton
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_gravity="center_horizontal"
-                   android:background="#00000000"
-                   android:src="@mipmap/ic_launcher" />
-
-               <TextView
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_gravity="center_horizontal"
-                   android:padding="2dip"
-                   android:text="โรคประจำตัว" />
-           </LinearLayout>
-
-           <LinearLayout
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:orientation="vertical">
-
-               <ImageButton
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_gravity="center_horizontal"
-                   android:background="#00000000"
-                   android:src="@mipmap/ic_launcher" />
-
-               <TextView
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_gravity="center_horizontal"
-                   android:padding="2dip"
-                   android:text="แพ้ยา" />
-           </LinearLayout>
-
-
-       </TableRow>
-
-       <TableRow android:paddingBottom="15dp">
-
-           <LinearLayout
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:orientation="vertical">
-
-               <ImageButton
-                   android:id="@+id/btn_appointment"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_gravity="center_horizontal"
-                   android:background="#00000000"
-                   android:src="@mipmap/ic_launcher" />
-
-               <TextView
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_gravity="center_horizontal"
-                   android:padding="2dip"
-                   android:text="หมอนัด" />
-           </LinearLayout>
-
-           <LinearLayout
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:orientation="vertical">
-
-               <ImageButton
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_gravity="center_horizontal"
-                   android:background="#00000000"
-                   android:src="@mipmap/ic_launcher" />
-
-               <TextView
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_gravity="center_horizontal"
-                   android:padding="2dip"
-                   android:text="ญาติ/คนรู้จัก" />
-           </LinearLayout>
-
-           <LinearLayout
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:orientation="vertical">
-
-               <ImageButton
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_gravity="center_horizontal"
-                   android:background="#00000000"
-                   android:src="@mipmap/ic_launcher" />
-
-               <TextView
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_gravity="center_horizontal"
-                   android:padding="2dip"
-                   android:text="โรงพยาบาล" />
-           </LinearLayout>
-
-
-       </TableRow>
-
-       <TableRow android:paddingBottom="15dp">
-
-
-           <LinearLayout
-
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:orientation="vertical">
-
-               <ImageButton
-                   android:id="@+id/btn_promotion"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_gravity="center_horizontal"
-                   android:background="#00000000"
-                   android:src="@mipmap/ic_launcher" />
-
-               <TextView
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_gravity="center_horizontal"
-                   android:padding="2dip"
-                   android:text="หมอแนะนำ" />
-           </LinearLayout>
-
-           <LinearLayout
-
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:orientation="vertical">
-
-               <ImageButton
-                   android:id="@+id/btn_talk_doctor"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_gravity="center_horizontal"
-                   android:background="#00000000"
-                   android:src="@mipmap/ic_launcher" />
-
-               <TextView
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_gravity="center_horizontal"
-                   android:padding="2dip"
-                   android:text="คุยกับหมอ" />
-           </LinearLayout>
-
-
-           <LinearLayout
-
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:orientation="vertical"
-             >
-
-               <ImageButton
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_gravity="center_horizontal"
-                   android:background="#00000000"
-                   android:src="@mipmap/ic_launcher" />
-
-               <TextView
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_gravity="center_horizontal"
-                   android:padding="2dip"
-                   android:text="ยา" />
-           </LinearLayout>
-
-
-       </TableRow>
-
-       <TableRow android:paddingBottom="15dp">
-
-
-           <LinearLayout
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:stretchColumns="*">
+
+
+        <TableRow android:paddingBottom="5dp"  android:gravity="center_horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageButton
+
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="#00000000"
+                    android:scaleType="fitCenter"
+                    android:onClick="btnPersonalInfo_Click"
+                    android:src="@mipmap/ic_launcher" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="16dp"
+
+                    android:text="ข้อมูลส่วนตัว" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageButton
+
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="#00000000"
+                    android:scaleType="fitCenter"
+                    android:onClick="btnPersonalInfo_Click"
+                    android:src="@mipmap/ic_launcher" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="16dp"
+
+                    android:text="โรงพยาบาล" />
+            </LinearLayout>
+
+
+        </TableRow>
+        <TableRow android:paddingBottom="5dp"  android:gravity="center_horizontal">
+
+            <LinearLayout
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageButton
+
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="#00000000"
+                    android:scaleType="fitCenter"
+                    android:onClick="btnPersonalInfo_Click"
+                    android:src="@mipmap/ic_launcher"
+                    android:id="@+id/btn_appointment" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="16dp"
+
+                    android:text="หมอนัด" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageButton
+
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="#00000000"
+                    android:scaleType="fitCenter"
+                    android:onClick="btnPersonalInfo_Click"
+                    android:src="@mipmap/ic_launcher" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="16dp"
+
+                    android:text="ฟังผลตรวจ" />
+            </LinearLayout>
+
+
+        </TableRow>
+        <TableRow android:paddingBottom="5dp"  android:gravity="center_horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageButton
+
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="#00000000"
+                    android:scaleType="fitCenter"
+                    android:onClick="btnPersonalInfo_Click"
+                    android:src="@mipmap/ic_launcher" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="16dp"
 
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:orientation="vertical">
+                    android:text="หมอแนะนำ" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageButton
+
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="#00000000"
+                    android:scaleType="fitCenter"
+                    android:onClick="btnPersonalInfo_Click"
+                    android:src="@mipmap/ic_launcher"
+                    android:id="@+id/btn_promotion" />
 
-               <ImageButton
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_gravity="center_horizontal"
-                   android:background="#00000000"
-                   android:src="@mipmap/ic_launcher" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="16dp"
 
-               <TextView
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_gravity="center_horizontal"
-                   android:padding="2dip"
-                   android:text="ประวัติป่วย" />
-           </LinearLayout>
+                    android:text="ความเสี่ยง" />
+            </LinearLayout>
 
-           <LinearLayout
 
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:orientation="vertical"
-               >
+        </TableRow>
+        <TableRow android:paddingBottom="5dp"  >
 
-               <ImageButton
-                   android:id="@+id/btn_lab_result"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_gravity="center_horizontal"
-                   android:background="#00000000"
-                   android:src="@mipmap/ic_launcher" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-               <TextView
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_gravity="center_horizontal"
-                   android:padding="2dip"
-                   android:text="ผลแล็บ" />
-           </LinearLayout>
+                android:orientation="vertical">
 
-           <LinearLayout
+                <ImageButton
 
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:orientation="vertical">
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="#00000000"
+                    android:scaleType="fitCenter"
+                    android:onClick="btnDoctorVisit_Click"
+                    android:src="@mipmap/ic_launcher" />
 
-               <ImageButton
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_gravity="center_horizontal"
-                   android:background="#00000000"
-                   android:src="@mipmap/ic_launcher" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="16dp"
 
-               <TextView
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_gravity="center_horizontal"
-                   android:padding="2dip"
-                   android:text="บันทึกตนเอง" />
-           </LinearLayout>
+                    android:text="บันทึกตนเอง" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
+                android:orientation="vertical">
 
+                <ImageButton
 
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="#00000000"
+                    android:scaleType="fitCenter"
+                    android:onClick="btnDoctorVisit_Click"
+                    android:src="@mipmap/ic_launcher" />
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="16dp"
 
-       </TableRow>
+                    android:text="ปรึกษาหมอ" />
+            </LinearLayout>
 
-       <TableRow android:paddingBottom="15dp">
 
+        </TableRow>
 
-           <LinearLayout
+        <TableRow android:paddingBottom="5dp"  >
 
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:orientation="vertical">
 
-               <ImageButton
-                   android:onClick="btnDoctorVisit_Click"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_gravity="center_horizontal"
-                   android:background="#00000000"
-                   android:src="@mipmap/ic_launcher" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-               <TextView
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_gravity="center_horizontal"
-                   android:padding="2dip"
-                   android:text="หมอมาเยี่ยม" />
-           </LinearLayout>
+                android:orientation="vertical">
 
+                <ImageButton
 
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="#00000000"
+                    android:scaleType="fitCenter"
+                    android:onClick="btnDoctorVisit_Click"
+                    android:src="@mipmap/ic_launcher" />
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="16dp"
 
+                    android:text="บันทึกเยี่ยม" />
+            </LinearLayout>
 
 
+        </TableRow>
 
-       </TableRow>
 
-   </TableLayout>
+
+    </TableLayout>
 
 
 </RelativeLayout>

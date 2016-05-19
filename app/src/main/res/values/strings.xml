@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">สมุดพกผู้ป่วย</string>
+    <string name="app_name">สุขใจใกล้หมอ</string>
     <string name="app_title">สมุดพกประจำตัวผู้ป่วย</string>
     <string name="action_settings">ตั้งค่า..</string>
     <string name="title_activity_admin_login">Login</string>

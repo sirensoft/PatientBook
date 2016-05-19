@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
         View btn_appointment = findViewById(R.id.btn_appointment);
         BadgeView badge1 = new BadgeView(this, btn_appointment);
-        badge1.setText("3");
+        badge1.setText("N");
         badge1.show();
 
         View btn_promotion = findViewById(R.id.btn_promotion);
@@ -57,15 +57,7 @@ public class MainActivity extends AppCompatActivity {
         badge2.setText("N");
         badge2.show();
 
-        ImageButton btn_talk_doctor = (ImageButton)findViewById(R.id.btn_talk_doctor);
-        BadgeView badge3 = new BadgeView(this,btn_talk_doctor);
-        badge3.setText("N");
-        badge3.show();
 
-        View btn_lab_result = findViewById(R.id.btn_lab_result);
-        BadgeView badge4 = new BadgeView(this,btn_lab_result);
-        badge4.setText("N");
-        badge4.show();
 
 
 

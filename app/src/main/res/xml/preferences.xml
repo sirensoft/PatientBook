@@ -8,7 +8,7 @@
         android:key="patient_cid"
         android:maxLength="13"
         android:singleLine="true"
-        android:summary="ตั้งค่าเลขบัตรประชาชน 13 หลักของผู้ป่วย/ผู้ใช้บริการ"
+        android:summary="ตั้งค่าเลขบัตรประชาชน 13 หลักของผู้ป่วย"
         android:title="Patient CID"></EditTextPreference>
 
     <EditTextPreference

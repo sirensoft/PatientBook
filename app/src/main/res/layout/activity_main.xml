@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/myCoordinatorLayout"
-    android:background="#5685C7"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
@@ -28,7 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
-        <include layout="@layout/content_main2" />
+        <include layout="@layout/content_main" />
     </android.support.v4.widget.NestedScrollView>
 
 
