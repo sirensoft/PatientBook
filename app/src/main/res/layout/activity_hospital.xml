@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/myCoordinatorLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".HospitalActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:stretchColumns="*">
+
+
+            <TableRow
+                android:gravity="center_horizontal"
+                android:paddingBottom="5dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <ImageButton
+
+                        android:layout_width="72dp"
+                        android:layout_height="72dp"
+                        android:layout_gravity="center_horizontal"
+                        android:background="#00000000"
+                        android:onClick="btnExamResult_Click"
+                        android:scaleType="fitCenter"
+                        android:src="@mipmap/ic_launcher" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="ฟังผลตรวจ"
+
+                        android:textSize="16dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <ImageButton
+
+                        android:layout_width="72dp"
+                        android:layout_height="72dp"
+                        android:layout_gravity="center_horizontal"
+                        android:background="#00000000"
+                        android:onClick="btnDrug_Click"
+                        android:scaleType="fitCenter"
+                        android:src="@mipmap/ic_launcher" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="ยา"
+
+                        android:textSize="16dp" />
+                </LinearLayout>
+
+
+            </TableRow>
+
+            <TableRow
+                android:gravity="center_horizontal"
+                android:paddingBottom="5dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <ImageButton
+
+                        android:layout_width="72dp"
+                        android:layout_height="72dp"
+                        android:layout_gravity="center_horizontal"
+                        android:background="#00000000"
+                        android:onClick="btnQueue_Click"
+                        android:scaleType="fitCenter"
+                        android:src="@mipmap/ic_launcher" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="คิวห้องตรวจ"
+
+                        android:textSize="16dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <ImageButton
+
+                        android:layout_width="72dp"
+                        android:layout_height="72dp"
+                        android:layout_gravity="center_horizontal"
+                        android:background="#00000000"
+                        android:onClick="btnContactNumber_Click"
+                        android:scaleType="fitCenter"
+                        android:src="@mipmap/ic_launcher" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="เบอร์ติดต่อ"
+
+                        android:textSize="16dp" />
+                </LinearLayout>
+
+
+            </TableRow>
+
+
+        </TableLayout>
+
+    </RelativeLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_hospital"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+
+        android:src="@android:drawable/stat_notify_sync_noanim" />
+
+</android.support.design.widget.CoordinatorLayout>

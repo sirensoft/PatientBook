@@ -9,7 +9,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
 
-    tools:context="plkhealth.it.app.patientbook.MainActivity"
+    tools:context=".MainActivity"
     tools:showIn="@layout/activity_main">
 
 
@@ -115,11 +115,12 @@
 
                 <ImageButton
 
+                    android:id="@+id/btn_promotion"
                     android:layout_width="72dp"
                     android:layout_height="72dp"
                     android:layout_gravity="center_horizontal"
                     android:background="#00000000"
-                    android:onClick="btnExamResult_Click"
+                    android:onClick="btnRisk_Click"
                     android:scaleType="fitCenter"
                     android:src="@mipmap/ic_launcher" />
 
@@ -127,7 +128,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="ฟังผลตรวจ"
+                    android:text="ความเสี่ยง"
 
                     android:textSize="16dp" />
             </LinearLayout>
@@ -167,17 +168,16 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+
                 android:orientation="vertical">
 
                 <ImageButton
 
-                    android:id="@+id/btn_promotion"
                     android:layout_width="72dp"
                     android:layout_height="72dp"
                     android:layout_gravity="center_horizontal"
                     android:background="#00000000"
-                    android:onClick="btnRisk_Click"
+                    android:onClick="btnConsult_Click"
                     android:scaleType="fitCenter"
                     android:src="@mipmap/ic_launcher" />
 
@@ -185,7 +185,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="ความเสี่ยง"
+                    android:text="ปรึกษาหมอ"
 
                     android:textSize="16dp" />
             </LinearLayout>
@@ -232,37 +232,6 @@
                     android:layout_height="72dp"
                     android:layout_gravity="center_horizontal"
                     android:background="#00000000"
-                    android:onClick="btnConsult_Click"
-                    android:scaleType="fitCenter"
-                    android:src="@mipmap/ic_launcher" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:text="ปรึกษาหมอ"
-
-                    android:textSize="16dp" />
-            </LinearLayout>
-
-
-        </TableRow>
-
-        <TableRow android:paddingBottom="5dp">
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:orientation="vertical">
-
-                <ImageButton
-
-                    android:layout_width="72dp"
-                    android:layout_height="72dp"
-                    android:layout_gravity="center_horizontal"
-                    android:background="#00000000"
                     android:onClick="btnDoctorVisit_Click"
                     android:scaleType="fitCenter"
                     android:src="@mipmap/ic_launcher" />
@@ -278,6 +247,8 @@
 
 
         </TableRow>
+
+
 
 
     </TableLayout>

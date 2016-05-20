@@ -29,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,10 +58,6 @@ public class MainActivity extends AppCompatActivity {
         BadgeView badge2 = new BadgeView(this,btn_promotion);
         badge2.setText("N");
         badge2.show();
-
-
-
-
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -137,6 +135,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void  btnDoctorVisit_Click(View view){
         Intent intent = new Intent(this,DoctorLoginActivity.class);
+        startActivity(intent);
+    }
+    public void  btnHospital_Click(View view){
+        Intent intent = new Intent(this,HospitalActivity.class);
         startActivity(intent);
     }
 
