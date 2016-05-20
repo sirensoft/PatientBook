@@ -9,8 +9,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
 
-   tools:context="plkhealth.it.app.patientbook.MainActivity"
-   tools:showIn="@layout/activity_main">
+    tools:context="plkhealth.it.app.patientbook.MainActivity"
+    tools:showIn="@layout/activity_main">
 
 
     <TableLayout
@@ -19,7 +19,9 @@
         android:stretchColumns="*">
 
 
-        <TableRow android:paddingBottom="5dp"  android:gravity="center_horizontal">
+        <TableRow
+            android:gravity="center_horizontal"
+            android:paddingBottom="5dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -33,17 +35,17 @@
                     android:layout_height="72dp"
                     android:layout_gravity="center_horizontal"
                     android:background="#00000000"
-                    android:scaleType="fitCenter"
                     android:onClick="btnPersonalInfo_Click"
+                    android:scaleType="fitCenter"
                     android:src="@mipmap/ic_launcher" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:textSize="16dp"
+                    android:text="ข้อมูลส่วนตัว"
 
-                    android:text="ข้อมูลส่วนตัว" />
+                    android:textSize="16dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -58,22 +60,25 @@
                     android:layout_height="72dp"
                     android:layout_gravity="center_horizontal"
                     android:background="#00000000"
+                    android:onClick="btnHospital_Click"
                     android:scaleType="fitCenter"
-                    android:onClick="btnPersonalInfo_Click"
                     android:src="@mipmap/ic_launcher" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:textSize="16dp"
+                    android:text="โรงพยาบาล"
 
-                    android:text="โรงพยาบาล" />
+                    android:textSize="16dp" />
             </LinearLayout>
 
 
         </TableRow>
-        <TableRow android:paddingBottom="5dp"  android:gravity="center_horizontal">
+
+        <TableRow
+            android:gravity="center_horizontal"
+            android:paddingBottom="5dp">
 
             <LinearLayout
 
@@ -84,52 +89,23 @@
 
                 <ImageButton
 
+                    android:id="@+id/btn_appointment"
                     android:layout_width="72dp"
                     android:layout_height="72dp"
                     android:layout_gravity="center_horizontal"
                     android:background="#00000000"
+                    android:onClick="btnDoctorAppointment_Click"
                     android:scaleType="fitCenter"
-                    android:onClick="btnPersonalInfo_Click"
-                    android:src="@mipmap/ic_launcher"
-                    android:id="@+id/btn_appointment" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:textSize="16dp"
-
-                    android:text="หมอนัด" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <ImageButton
-
-                    android:layout_width="72dp"
-                    android:layout_height="72dp"
-                    android:layout_gravity="center_horizontal"
-                    android:background="#00000000"
-                    android:scaleType="fitCenter"
-                    android:onClick="btnPersonalInfo_Click"
                     android:src="@mipmap/ic_launcher" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:textSize="16dp"
+                    android:text="หมอนัด"
 
-                    android:text="ฟังผลตรวจ" />
+                    android:textSize="16dp" />
             </LinearLayout>
-
-
-        </TableRow>
-        <TableRow android:paddingBottom="5dp"  android:gravity="center_horizontal">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -143,18 +119,25 @@
                     android:layout_height="72dp"
                     android:layout_gravity="center_horizontal"
                     android:background="#00000000"
+                    android:onClick="btnExamResult_Click"
                     android:scaleType="fitCenter"
-                    android:onClick="btnPersonalInfo_Click"
                     android:src="@mipmap/ic_launcher" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:textSize="16dp"
+                    android:text="ฟังผลตรวจ"
 
-                    android:text="หมอแนะนำ" />
+                    android:textSize="16dp" />
             </LinearLayout>
+
+
+        </TableRow>
+
+        <TableRow
+            android:gravity="center_horizontal"
+            android:paddingBottom="5dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -168,23 +151,49 @@
                     android:layout_height="72dp"
                     android:layout_gravity="center_horizontal"
                     android:background="#00000000"
+                    android:onClick="btnDoctorSuggestion_Click"
                     android:scaleType="fitCenter"
-                    android:onClick="btnPersonalInfo_Click"
-                    android:src="@mipmap/ic_launcher"
-                    android:id="@+id/btn_promotion" />
+                    android:src="@mipmap/ic_launcher" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:textSize="16dp"
+                    android:text="หมอแนะนำ"
 
-                    android:text="ความเสี่ยง" />
+                    android:textSize="16dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageButton
+
+                    android:id="@+id/btn_promotion"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="#00000000"
+                    android:onClick="btnRisk_Click"
+                    android:scaleType="fitCenter"
+                    android:src="@mipmap/ic_launcher" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="ความเสี่ยง"
+
+                    android:textSize="16dp" />
             </LinearLayout>
 
 
         </TableRow>
-        <TableRow android:paddingBottom="5dp"  >
+
+        <TableRow android:paddingBottom="5dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -198,77 +207,77 @@
                     android:layout_height="72dp"
                     android:layout_gravity="center_horizontal"
                     android:background="#00000000"
+                    android:onClick="btnPersonalRecord_Click"
                     android:scaleType="fitCenter"
+                    android:src="@mipmap/ic_launcher" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="บันทึกตนเอง"
+
+                    android:textSize="16dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:orientation="vertical">
+
+                <ImageButton
+
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="#00000000"
+                    android:onClick="btnConsult_Click"
+                    android:scaleType="fitCenter"
+                    android:src="@mipmap/ic_launcher" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="ปรึกษาหมอ"
+
+                    android:textSize="16dp" />
+            </LinearLayout>
+
+
+        </TableRow>
+
+        <TableRow android:paddingBottom="5dp">
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:orientation="vertical">
+
+                <ImageButton
+
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="#00000000"
                     android:onClick="btnDoctorVisit_Click"
-                    android:src="@mipmap/ic_launcher" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:textSize="16dp"
-
-                    android:text="บันทึกตนเอง" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:orientation="vertical">
-
-                <ImageButton
-
-                    android:layout_width="72dp"
-                    android:layout_height="72dp"
-                    android:layout_gravity="center_horizontal"
-                    android:background="#00000000"
                     android:scaleType="fitCenter"
-                    android:onClick="btnDoctorVisit_Click"
                     android:src="@mipmap/ic_launcher" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:textSize="16dp"
+                    android:text="บันทึกเยี่ยม"
 
-                    android:text="ปรึกษาหมอ" />
+                    android:textSize="16dp" />
             </LinearLayout>
 
 
         </TableRow>
-
-        <TableRow android:paddingBottom="5dp"  >
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:orientation="vertical">
-
-                <ImageButton
-
-                    android:layout_width="72dp"
-                    android:layout_height="72dp"
-                    android:layout_gravity="center_horizontal"
-                    android:background="#00000000"
-                    android:scaleType="fitCenter"
-                    android:onClick="btnDoctorVisit_Click"
-                    android:src="@mipmap/ic_launcher" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:textSize="16dp"
-
-                    android:text="บันทึกเยี่ยม" />
-            </LinearLayout>
-
-
-        </TableRow>
-
 
 
     </TableLayout>
