@@ -1,29 +1,24 @@
 package plkhealth.it.app.patientbook;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 
 public class PersonalInfoActivity extends AppCompatActivity {
 
-    //SharedPreferences pref ;
-    Toolbar toolbar;
+
     MyGlobals myGlobal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal_info);
-        toolbar = (Toolbar)findViewById(R.id.toolbar2);
-        setSupportActionBar(toolbar);
+
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         setTitle("ข้อมูลส่วนตัว");
         myGlobal = new MyGlobals(getApplicationContext());
 
