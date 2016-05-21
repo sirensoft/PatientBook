@@ -27,6 +27,11 @@ public class MyGlobals {
     public String getPatientCid(){
         return pref.getString("patient_cid","");
     }
+
+    public String getApiUrl(){
+        return  pref.getString("api_url","");
+    }
+
     public boolean getIsActivated(String cid){
         String patient_cid = getPatientCid();
 

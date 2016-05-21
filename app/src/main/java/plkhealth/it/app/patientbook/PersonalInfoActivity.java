@@ -77,9 +77,10 @@ public class PersonalInfoActivity extends AppCompatActivity {
         myGlobal = new MyGlobals(getApplicationContext());
 
         String patient_cid =myGlobal.getPatientCid();
+        String ApiUrl = myGlobal.getApiUrl();
 
         bindWebView();
-        final String url = "http://192.168.199.155/patientbookapi/frontend/web/index.php?r=patient/index&cid="+patient_cid;
+        final String url = ApiUrl+"/frontend/web/index.php?r=patient/index&cid="+patient_cid;
         loadData(url);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_personal_info);
         fab.setOnClickListener(new View.OnClickListener() {
