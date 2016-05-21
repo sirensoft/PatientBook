@@ -48,9 +48,8 @@ public class PersonalInfoActivity extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-
                         // Result handling
-                        //System.out.println(response.substring(0,100));
+                        //System.out.println(response);
                         webView.loadData(response, "text/html; charset=utf-8", "UTF-8");
 
                     }
@@ -59,7 +58,7 @@ public class PersonalInfoActivity extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
 
                 // Error handling
-                System.out.println("Something went wrong!");
+                webView.loadData("<h3>ไม่สามารถเชื่อมต่อข้อมูลได้</h3>", "text/html; charset=utf-8", "UTF-8");
                 error.printStackTrace();
 
             }
@@ -75,8 +74,12 @@ public class PersonalInfoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal_info);
+        myGlobal = new MyGlobals(getApplicationContext());
+
+        String patient_cid =myGlobal.getPatientCid();
+
         bindWebView();
-        final String url = "https://www.gotoknow.org/posts/170091";
+        final String url = "http://192.168.199.155/patientbookapi/frontend/web/index.php?r=patient/index&cid="+patient_cid;
         loadData(url);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_personal_info);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -93,12 +96,7 @@ public class PersonalInfoActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         setTitle("ข้อมูลส่วนตัว");
-        myGlobal = new MyGlobals(getApplicationContext());
 
-        //pref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        //String patient_cid = pref.getString("patient_cid", "");
-        String patient_cid =myGlobal.getPatientCid();
-        //Toast.makeText(getApplicationContext(),patient_cid,Toast.LENGTH_SHORT).show();
 
 
 
