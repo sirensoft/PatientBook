@@ -36,17 +36,17 @@ public class PersonalInfoActivity extends AppCompatActivity {
 
 
     MyGlobals myGlobal;
-    WebView webView ;
+    WebView webView;
 
 
-
-    private void bindWebView(){
+    private void bindWebView() {
         webView = (WebView) findViewById(R.id.wb_personal_info);
         webView.setWebViewClient(new MyWebViewClient());
         webView.getSettings().setJavaScriptEnabled(true);
 
     }
-    private void loadNewData(String url){
+
+    private void loadNewData(String url) {
         // Request a string response
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
@@ -54,11 +54,10 @@ public class PersonalInfoActivity extends AppCompatActivity {
                     public void onResponse(String response) {
 
 
-                            Prefs.putString("personal_info", response);
+                        Prefs.putString("personal_info", response);
 
 
-
-                        String personal_info = Prefs.getString("personal_info","");
+                        String personal_info = Prefs.getString("personal_info", "");
 
                         webView.loadData(personal_info, "text/html; charset=utf-8", "UTF-8");
 
@@ -68,7 +67,7 @@ public class PersonalInfoActivity extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
 
                 // Error handling
-                webView.loadData("<h3>ไม่สามารถเชื่อมต่อข้อมูลได้</h3>", "text/html; charset=utf-8", "UTF-8");
+                webView.loadData("ไม่สามารถเชื่อมต่อข้อมูลได้", "text/html; charset=utf-8", "UTF-8");
                 error.printStackTrace();
 
             }
@@ -79,7 +78,6 @@ public class PersonalInfoActivity extends AppCompatActivity {
     }
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,18 +85,18 @@ public class PersonalInfoActivity extends AppCompatActivity {
         myGlobal = new MyGlobals(getApplicationContext());
 
 
-        String patient_cid =myGlobal.getPatientCid();
+        String patient_cid = myGlobal.getPatientCid();
         String ApiUrl = myGlobal.getApiUrl();
 
         bindWebView();
-        webView.loadData(Prefs.getString("personal_info",""),"text/html; charset=utf-8", "UTF-8");
-        final String url = ApiUrl+"/frontend/web/index.php?r=patient/index&cid="+patient_cid;
+        webView.loadData(Prefs.getString("personal_info", ""), "text/html; charset=utf-8", "UTF-8");
+        final String url = ApiUrl + "/frontend/web/index.php?r=patient/index&cid=" + patient_cid;
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_personal_info);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                webView.loadData(null,null,null);
+                webView.loadData("กรุณารอสักครู่...", "text/html; charset=utf-8", "UTF-8");
                 loadNewData(url);
 
             }
@@ -109,8 +107,6 @@ public class PersonalInfoActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         setTitle("ข้อมูลส่วนตัว");
-
-
 
 
     }
@@ -130,8 +126,6 @@ public class PersonalInfoActivity extends AppCompatActivity {
             return true;
         }
     }
-
-
 
 
 }
