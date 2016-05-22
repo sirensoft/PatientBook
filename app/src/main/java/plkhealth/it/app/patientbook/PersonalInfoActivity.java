@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 
@@ -22,6 +23,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
 import com.pixplicity.easyprefs.library.Prefs;
 
 import java.io.BufferedReader;
@@ -37,6 +39,7 @@ public class PersonalInfoActivity extends AppCompatActivity {
 
     MyGlobals myGlobal;
     WebView webView;
+    ImageView img_personal_info;
 
 
     private void bindWebView() {
@@ -44,6 +47,9 @@ public class PersonalInfoActivity extends AppCompatActivity {
         webView.setWebViewClient(new MyWebViewClient());
         webView.getSettings().setJavaScriptEnabled(true);
 
+    }
+    private void bindWidget(){
+        img_personal_info = (ImageView)findViewById(R.id.img_personal_info);
     }
 
     private void loadNewData(String url) {
@@ -60,6 +66,8 @@ public class PersonalInfoActivity extends AppCompatActivity {
                         String personal_info = Prefs.getString("personal_info", "");
 
                         webView.loadData(personal_info, "text/html; charset=utf-8", "UTF-8");
+
+
 
                     }
                 }, new Response.ErrorListener() {
@@ -82,13 +90,18 @@ public class PersonalInfoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal_info);
-        myGlobal = new MyGlobals(getApplicationContext());
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setTitle("ข้อมูลส่วนตัว");
 
+        myGlobal = new MyGlobals(getApplicationContext());
 
         String patient_cid = myGlobal.getPatientCid();
         String ApiUrl = myGlobal.getApiUrl();
 
         bindWebView();
+        bindWidget();
+
         webView.loadData(Prefs.getString("personal_info", ""), "text/html; charset=utf-8", "UTF-8");
         final String url = ApiUrl + "/frontend/web/index.php?r=patient/index&cid=" + patient_cid;
 
@@ -98,15 +111,15 @@ public class PersonalInfoActivity extends AppCompatActivity {
             public void onClick(View view) {
                 webView.loadData("กรุณารอสักครู่...", "text/html; charset=utf-8", "UTF-8");
                 loadNewData(url);
+                Glide.with(getApplicationContext()).load("https://cdn4.iconfinder.com/data/icons/LUMINA/web_design/png/400/members.png").into(img_personal_info);
 
             }
         });
 
+        Glide.with(getApplicationContext()).load("https://cdn4.iconfinder.com/data/icons/LUMINA/web_design/png/400/members.png").into(img_personal_info);
 
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        setTitle("ข้อมูลส่วนตัว");
+
 
 
     }
