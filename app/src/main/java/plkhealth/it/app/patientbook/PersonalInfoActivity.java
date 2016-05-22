@@ -1,7 +1,9 @@
 package plkhealth.it.app.patientbook;
 
 import android.app.ProgressDialog;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -20,6 +22,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.pixplicity.easyprefs.library.Prefs;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -36,21 +39,28 @@ public class PersonalInfoActivity extends AppCompatActivity {
     WebView webView ;
 
 
+
     private void bindWebView(){
         webView = (WebView) findViewById(R.id.wb_personal_info);
         webView.setWebViewClient(new MyWebViewClient());
         webView.getSettings().setJavaScriptEnabled(true);
 
     }
-    private void loadData(String url){
+    private void loadNewData(String url){
         // Request a string response
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        // Result handling
-                        //System.out.println(response);
-                        webView.loadData(response, "text/html; charset=utf-8", "UTF-8");
+
+
+                            Prefs.putString("personal_info", response);
+
+
+
+                        String personal_info = Prefs.getString("personal_info","");
+
+                        webView.loadData(personal_info, "text/html; charset=utf-8", "UTF-8");
 
                     }
                 }, new Response.ErrorListener() {
@@ -76,18 +86,20 @@ public class PersonalInfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_personal_info);
         myGlobal = new MyGlobals(getApplicationContext());
 
+
         String patient_cid =myGlobal.getPatientCid();
         String ApiUrl = myGlobal.getApiUrl();
 
         bindWebView();
+        webView.loadData(Prefs.getString("personal_info",""),"text/html; charset=utf-8", "UTF-8");
         final String url = ApiUrl+"/frontend/web/index.php?r=patient/index&cid="+patient_cid;
-        loadData(url);
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_personal_info);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 webView.loadData(null,null,null);
-                loadData(url);
+                loadNewData(url);
 
             }
         });

@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.pixplicity.easyprefs.library.Prefs;
 import com.readystatesoftware.viewbadger.BadgeView;
 
 
@@ -23,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     ProgressDialog progress;
-    SharedPreferences pref ;
+
 
     MyGlobals myGlobal;
 
@@ -40,13 +41,13 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         toolbar.setLogo(R.mipmap.ic_launcher);
         toolbar.setTitle(getResources().getText(R.string.app_title));
-        pref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
 
-        SharedPreferences.Editor editor = pref.edit();
 
-        editor.putBoolean("patient_activated",true);
-        editor.apply();
+        //SharedPreferences.Editor editor = pref.edit();
+        Prefs.putBoolean("patient_activated",true);
+       // editor.putBoolean("patient_activated",true);
+        //editor.apply();
 
 
         View btn_appointment = findViewById(R.id.btn_appointment);
@@ -63,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                boolean patient_activated =  pref.getBoolean("patient_activated",false);
+                boolean patient_activated =  Prefs.getBoolean("patient_activated",false);
                 if(!patient_activated){
                     Snackbar snackbar = Snackbar.make(viewParent, "ไม่ได้รับอนุญาต", Snackbar.LENGTH_LONG);
                     snackbar.show();
@@ -78,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
                     {
                         // do the thing that takes a long time
                        try{
-                           Thread.sleep(10000);
+                           Thread.sleep(5000);
                        }catch (Exception e){
 
                        }
@@ -87,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
                             public void run()
                             {
                                 progress.dismiss();
-                                String name = pref.getString("name", "");
+                                String name = Prefs.getString("patient_cid","");
                                 Toast.makeText(getApplicationContext(),name,Toast.LENGTH_SHORT).show();
                             }
                         });

@@ -7,6 +7,8 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.preference.PreferenceManager;
 
+import com.pixplicity.easyprefs.library.Prefs;
+
 import java.util.List;
 
 /**
@@ -14,22 +16,22 @@ import java.util.List;
  */
 public class MyGlobals {
     Context mContext;
-    SharedPreferences pref ;
+
     // constructor
     public MyGlobals(Context context){
         this.mContext = context;
-        pref = PreferenceManager.getDefaultSharedPreferences(mContext);
+
     }
 
 
 
 
     public String getPatientCid(){
-        return pref.getString("patient_cid","");
+        return Prefs.getString("patient_cid","");
     }
 
     public String getApiUrl(){
-        return  pref.getString("api_url","");
+        return  Prefs.getString("api_url","");
     }
 
     public boolean getIsActivated(String cid){
