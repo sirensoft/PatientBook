@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layout_personal_info"
@@ -10,24 +9,25 @@
     tools:context=".PersonalInfoActivity">
 
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
-    <ImageView
-        android:layout_width="160dp"
-        android:layout_height="160dp"
-        android:layout_gravity="center_horizontal"
-        android:id="@+id/img_personal_info" />
-    <WebView
-        android:id="@+id/wb_personal_info"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></WebView>
+        android:layout_height="match_parent"
+        android:background="#0097cf"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/img_personal_info"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:layout_gravity="center_horizontal" />
+
+        <WebView
+            android:id="@+id/wb_personal_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></WebView>
 
 
-</LinearLayout>
-
-
+    </LinearLayout>
 
 
     <android.support.design.widget.FloatingActionButton
@@ -38,7 +38,6 @@
         android:layout_margin="@dimen/fab_margin"
 
         android:src="@android:drawable/stat_notify_sync_noanim" />
-
 
 
 </android.support.design.widget.CoordinatorLayout>

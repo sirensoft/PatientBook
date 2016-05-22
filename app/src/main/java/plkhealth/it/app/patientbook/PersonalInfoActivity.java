@@ -2,6 +2,7 @@ package plkhealth.it.app.patientbook;
 
 import android.app.ProgressDialog;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
@@ -44,6 +45,8 @@ public class PersonalInfoActivity extends AppCompatActivity {
 
     private void bindWebView() {
         webView = (WebView) findViewById(R.id.wb_personal_info);
+        webView.setBackgroundColor(Color.TRANSPARENT);
+        webView.setLayerType(WebView.LAYER_TYPE_SOFTWARE, null);
         webView.setWebViewClient(new MyWebViewClient());
         webView.getSettings().setJavaScriptEnabled(true);
 
