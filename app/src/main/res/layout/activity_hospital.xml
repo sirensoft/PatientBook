@@ -47,64 +47,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:text="ฟังผลตรวจ"
-
-                        android:textSize="16dp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <ImageButton
-
-                        android:layout_width="72dp"
-                        android:layout_height="72dp"
-                        android:layout_gravity="center_horizontal"
-                        android:background="#00000000"
-                        android:onClick="btnDrug_Click"
-                        android:scaleType="fitCenter"
-                        android:src="@mipmap/ic_launcher" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:text="ยา"
-
-                        android:textSize="16dp" />
-                </LinearLayout>
-
-
-            </TableRow>
-
-            <TableRow
-                android:gravity="center_horizontal"
-                android:paddingBottom="5dp">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <ImageButton
-
-                        android:layout_width="72dp"
-                        android:layout_height="72dp"
-                        android:layout_gravity="center_horizontal"
-                        android:background="#00000000"
-                        android:onClick="btnQueue_Click"
-                        android:scaleType="fitCenter"
-                        android:src="@mipmap/ic_launcher" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:text="คิวห้องตรวจ"
+                        android:text="ฟังผลเลือด"
 
                         android:textSize="16dp" />
                 </LinearLayout>
@@ -135,7 +78,11 @@
                 </LinearLayout>
 
 
+
+
             </TableRow>
+
+
 
 
         </TableLayout>
