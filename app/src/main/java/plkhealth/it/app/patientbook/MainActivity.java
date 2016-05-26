@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.pixplicity.easyprefs.library.Prefs;
 import com.readystatesoftware.viewbadger.BadgeView;
 
@@ -41,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         toolbar.setLogo(R.mipmap.ic_launcher);
         toolbar.setTitle(getResources().getText(R.string.app_title));
+
+        FirebaseMessaging.getInstance().subscribeToTopic("news");
 
 
 

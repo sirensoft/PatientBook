@@ -2,6 +2,7 @@ package plkhealth.it.app.patientbook;
 
 import android.app.ProgressDialog;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -141,6 +142,18 @@ public class PersonalInfoActivity extends AppCompatActivity {
             view.loadUrl(url);
             return true;
         }
+        @Override
+        public void onPageFinished(WebView view, final String url) {
+
+
+        }
+        @Override
+        public void onPageStarted(WebView view, String url, Bitmap favicon) {
+
+
+        }
+
+
     }
 
 

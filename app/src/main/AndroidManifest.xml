@@ -48,6 +48,17 @@
         <activity android:name=".DoctorLoginActivity" />
         <activity android:name=".DoctorVisitActivity" />
         <activity android:name=".HospitalActivity"/>
+
+
+        <!-- [START firebase_service] -->
+        <service
+            android:name=".MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+        <!-- [END firebase_service] -->
+
     </application>
 
 </manifest>
