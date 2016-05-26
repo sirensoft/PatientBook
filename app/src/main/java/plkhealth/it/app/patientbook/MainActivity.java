@@ -9,12 +9,14 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.pixplicity.easyprefs.library.Prefs;
 import com.readystatesoftware.viewbadger.BadgeView;
@@ -43,7 +45,13 @@ public class MainActivity extends AppCompatActivity {
         toolbar.setLogo(R.mipmap.ic_launcher);
         toolbar.setTitle(getResources().getText(R.string.app_title));
 
-        FirebaseMessaging.getInstance().subscribeToTopic("news");
+        Prefs.putString("group","risk");
+        String group = Prefs.getString("group","common");
+
+        FirebaseMessaging.getInstance().subscribeToTopic(group);
+        String firebase_token = FirebaseInstanceId.getInstance().getToken();
+        Prefs.putString("firebase_token",firebase_token);
+        Log.d("Tokend", "InstanceID token: " + firebase_token);
 
 
 
