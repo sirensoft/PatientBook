@@ -153,5 +153,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this,HospitalActivity.class);
         startActivity(intent);
     }
+    public void  btnDoctorSuggestion_Click(View view){
+        Intent intent = new Intent(this,WebviewActivity.class);
+        startActivity(intent);
+    }
 
 }

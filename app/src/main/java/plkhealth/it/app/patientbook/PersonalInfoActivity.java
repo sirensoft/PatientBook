@@ -107,7 +107,8 @@ public class PersonalInfoActivity extends AppCompatActivity {
         bindWidget();
 
         webView.loadData(Prefs.getString("personal_info", ""), "text/html; charset=utf-8", "UTF-8");
-        final String url = ApiUrl + "/frontend/web/index.php?r=patient/index&cid=" + patient_cid;
+        final String url = ApiUrl + "/frontend/web/patient/index?cid=" + patient_cid;
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_personal_info);
         fab.setOnClickListener(new View.OnClickListener() {
