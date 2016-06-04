@@ -15,8 +15,9 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
+            android:logo="@drawable/apps"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:icon="@mipmap/ic_launcher"
+            android:icon="@drawable/apps"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>

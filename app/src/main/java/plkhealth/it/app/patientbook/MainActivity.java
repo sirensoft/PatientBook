@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         final View viewParent = findViewById(R.id.myCoordinatorLayout);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setLogo(R.mipmap.ic_launcher);
+        toolbar.setLogo(R.drawable.apps);
         toolbar.setTitle(getResources().getText(R.string.app_title));
 
         Prefs.putString("group","risk");
