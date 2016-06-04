@@ -37,7 +37,7 @@
                     android:background="#00000000"
                     android:onClick="btnPersonalInfo_Click"
                     android:scaleType="fitCenter"
-                    android:src="@mipmap/ic_launcher" />
+                    android:src="@drawable/profile" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -62,7 +62,7 @@
                     android:background="#00000000"
                     android:onClick="btnHospital_Click"
                     android:scaleType="fitCenter"
-                    android:src="@mipmap/ic_launcher" />
+                    android:src="@drawable/hospital" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -96,7 +96,7 @@
                     android:background="#00000000"
                     android:onClick="btnDoctorAppointment_Click"
                     android:scaleType="fitCenter"
-                    android:src="@mipmap/ic_launcher" />
+                    android:src="@drawable/alarm" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -122,7 +122,7 @@
                     android:background="#00000000"
                     android:onClick="btnRisk_Click"
                     android:scaleType="fitCenter"
-                    android:src="@mipmap/ic_launcher" />
+                    android:src="@drawable/warning" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -154,7 +154,7 @@
                     android:background="#00000000"
                     android:onClick="btnDoctorSuggestion_Click"
                     android:scaleType="fitCenter"
-                    android:src="@mipmap/ic_launcher" />
+                    android:src="@drawable/guide" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -179,7 +179,7 @@
                     android:background="#00000000"
                     android:onClick="btnConsult_Click"
                     android:scaleType="fitCenter"
-                    android:src="@mipmap/ic_launcher" />
+                    android:src="@drawable/apps" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -209,7 +209,7 @@
                     android:background="#00000000"
                     android:onClick="btnPersonalRecord_Click"
                     android:scaleType="fitCenter"
-                    android:src="@mipmap/ic_launcher" />
+                    android:src="@drawable/record" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -234,7 +234,7 @@
                     android:background="#00000000"
                     android:onClick="btnDoctorVisit_Click"
                     android:scaleType="fitCenter"
-                    android:src="@mipmap/ic_launcher" />
+                    android:src="@drawable/visit" />
 
                 <TextView
                     android:layout_width="wrap_content"
