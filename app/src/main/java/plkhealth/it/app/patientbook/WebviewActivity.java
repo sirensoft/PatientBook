@@ -16,7 +16,7 @@ public class WebviewActivity extends AppCompatActivity {
 
     private void bindWebView() {
         youtube = (WebView) findViewById(R.id.youtube);
-        //youtube.setBackgroundColor(Color.TRANSPARENT);
+        youtube.setBackgroundColor(Color.TRANSPARENT);
         //youtube.setLayerType(WebView.LAYER_TYPE_SOFTWARE, null);
         youtube.setWebViewClient(new MyWebViewClient());
         youtube.getSettings().setJavaScriptEnabled(true);
@@ -49,6 +49,11 @@ public class WebviewActivity extends AppCompatActivity {
         @Override
         public void onPageStarted(WebView view, String url, Bitmap favicon) {
 
+
+        }
+
+        public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+            view.loadData("<html><body>No internet connection</body></html>","text-html","UTF-8");
 
         }
 
