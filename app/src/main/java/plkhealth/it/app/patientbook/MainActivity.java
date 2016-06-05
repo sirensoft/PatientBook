@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setLogo(R.drawable.apps);
-        toolbar.setTitle(getResources().getText(R.string.app_title));
+        //toolbar.setTitle(getResources().getText(R.string.app_title));
 
         Prefs.putString("group","risk");
         String group = Prefs.getString("group","common");
