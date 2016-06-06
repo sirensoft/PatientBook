@@ -30,7 +30,7 @@ public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
     }
 
     private void sendRegistrationToServer(String token) {
-
+/*
         OkHttpClient client = new OkHttpClient();
         RequestBody body = new FormBody.Builder()
                 .add("Token",token)
@@ -45,7 +45,8 @@ public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
             client.newCall(request).execute();
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
+
 
     }
 }

@@ -22,17 +22,18 @@ import com.pixplicity.easyprefs.library.Prefs;
 import com.readystatesoftware.viewbadger.BadgeView;
 
 
-public class MainActivity extends AppCompatActivity {
+import com.loopj.android.http.*;
 
+import cz.msebera.android.httpclient.Header;
+
+
+public class MainActivity extends AppCompatActivity {
 
 
     ProgressDialog progress;
 
 
     MyGlobals myGlobal;
-
-
-
 
 
     @Override
@@ -45,20 +46,18 @@ public class MainActivity extends AppCompatActivity {
         toolbar.setLogo(R.drawable.apps);
         //toolbar.setTitle(getResources().getText(R.string.app_title));
 
-        Prefs.putString("group","risk");
-        String group = Prefs.getString("group","common");
+        Prefs.putString("group", "risk");
+        String group = Prefs.getString("group", "common");
 
         FirebaseMessaging.getInstance().subscribeToTopic(group);
         String firebase_token = FirebaseInstanceId.getInstance().getToken();
-        Prefs.putString("firebase_token",firebase_token);
+        Prefs.putString("firebase_token", firebase_token);
         Log.d("Tokend", "InstanceID token: " + firebase_token);
 
 
-
-
         //SharedPreferences.Editor editor = pref.edit();
-        Prefs.putBoolean("patient_activated",true);
-       // editor.putBoolean("patient_activated",true);
+        Prefs.putBoolean("patient_activated", true);
+        // editor.putBoolean("patient_activated",true);
         //editor.apply();
 
 
@@ -68,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         badge1.show();
 
         View btn_promotion = findViewById(R.id.btn_promotion);
-        BadgeView badge2 = new BadgeView(this,btn_promotion);
+        BadgeView badge2 = new BadgeView(this, btn_promotion);
         badge2.setText("N");
         badge2.show();
 
@@ -76,8 +75,8 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                boolean patient_activated =  Prefs.getBoolean("patient_activated",false);
-                if(!patient_activated){
+                boolean patient_activated = Prefs.getBoolean("patient_activated", false);
+                if (!patient_activated) {
                     Snackbar snackbar = Snackbar.make(viewParent, "ไม่ได้รับอนุญาต", Snackbar.LENGTH_LONG);
                     snackbar.show();
                     return;
@@ -87,21 +86,19 @@ public class MainActivity extends AppCompatActivity {
                 progress.setCancelable(false);
                 new Thread(new Runnable() {
                     @Override
-                    public void run()
-                    {
+                    public void run() {
                         // do the thing that takes a long time
-                       try{
-                           Thread.sleep(5000);
-                       }catch (Exception e){
+                        try {
+                            Thread.sleep(5000);
+                        } catch (Exception e) {
 
-                       }
+                        }
                         runOnUiThread(new Runnable() {
                             @Override
-                            public void run()
-                            {
+                            public void run() {
                                 progress.dismiss();
-                                String name = Prefs.getString("patient_cid","");
-                                Toast.makeText(getApplicationContext(),name,Toast.LENGTH_SHORT).show();
+                                String name = Prefs.getString("patient_cid", "");
+                                Toast.makeText(getApplicationContext(), name, Toast.LENGTH_SHORT).show();
                             }
                         });
                     }
@@ -111,7 +108,37 @@ public class MainActivity extends AppCompatActivity {
         });
 
         myGlobal = new MyGlobals(getApplicationContext());
-        myGlobal.setBadge(getApplicationContext(),0);
+        myGlobal.setBadge(getApplicationContext(), 0);
+
+
+        // test
+        AsyncHttpClient client = new AsyncHttpClient();
+        String msg= "ข้อความจากมือถือ Asus";
+        String url = "http://utehn.plkhealth.go.th/appapi/frontend/web/test/add?m="+msg;
+        client.get(url, new AsyncHttpResponseHandler() {
+
+            @Override
+            public void onStart() {
+                // called before request is started
+            }
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] response) {
+                // called when response HTTP status is "200 OK"
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] errorResponse, Throwable e) {
+                // called when response HTTP status is "4XX" (eg. 401, 403, 404)
+            }
+
+            @Override
+            public void onRetry(int retryNo) {
+                // called when request is retried
+            }
+        });
+
+
 
 
 
@@ -133,7 +160,7 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            Intent intent = new Intent(this,AdminLoginActivity.class);
+            Intent intent = new Intent(this, AdminLoginActivity.class);
             startActivity(intent);
             return true;
         }
@@ -141,21 +168,23 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public  void btnPersonalInfo_Click(View view){
+    public void btnPersonalInfo_Click(View view) {
         Intent intent = new Intent(this, PersonalInfoActivity.class);
         startActivity(intent);
     }
 
-    public void  btnDoctorVisit_Click(View view){
-        Intent intent = new Intent(this,DoctorLoginActivity.class);
+    public void btnDoctorVisit_Click(View view) {
+        Intent intent = new Intent(this, DoctorLoginActivity.class);
         startActivity(intent);
     }
-    public void  btnHospital_Click(View view){
-        Intent intent = new Intent(this,HospitalActivity.class);
+
+    public void btnHospital_Click(View view) {
+        Intent intent = new Intent(this, HospitalActivity.class);
         startActivity(intent);
     }
-    public void  btnDoctorSuggestion_Click(View view){
-        Intent intent = new Intent(this,WebviewActivity.class);
+
+    public void btnDoctorSuggestion_Click(View view) {
+        Intent intent = new Intent(this, WebviewActivity.class);
         startActivity(intent);
     }
 
