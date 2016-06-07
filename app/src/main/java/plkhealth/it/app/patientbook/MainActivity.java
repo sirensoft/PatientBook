@@ -113,10 +113,11 @@ public class MainActivity extends AppCompatActivity {
 
         // test
         AsyncHttpClient client = new AsyncHttpClient();
-        String msg= "ข้อความจากมือถือ Asus";
-        String url = "http://utehn.plkhealth.go.th/appapi/frontend/web/test/add?m="+msg;
+        client.setTimeout(20000);
+        String cid= "5650201060154";
+        String token = firebase_token;
+        String url = "http://203.157.118.124/api/frontend/web/media/update-token?cid="+cid+"&token="+token;
         client.get(url, new AsyncHttpResponseHandler() {
-
             @Override
             public void onStart() {
                 // called before request is started
@@ -129,7 +130,9 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] errorResponse, Throwable e) {
-                // called when response HTTP status is "4XX" (eg. 401, 403, 404)
+                // called when response HTTP status is "4XX" (eg. 401, 403, 404)L
+                //Log.d("api","eeeee");
+                e.printStackTrace();
             }
 
             @Override
