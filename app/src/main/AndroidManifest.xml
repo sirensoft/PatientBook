@@ -9,15 +9,15 @@
     <application
         android:name=".PatientBookApplication"
         android:allowBackup="true"
-        android:icon="@drawable/apps2"
+        android:icon="@drawable/apps1"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
-            android:logo="@drawable/apps2"
+            android:logo="@drawable/apps1"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:icon="@drawable/apps"
+            android:icon="@drawable/apps1"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
