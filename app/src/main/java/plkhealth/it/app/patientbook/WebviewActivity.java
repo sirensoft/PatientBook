@@ -2,13 +2,17 @@ package plkhealth.it.app.patientbook;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
+import com.pixplicity.easyprefs.library.Prefs;
 
 public class WebviewActivity extends AppCompatActivity {
 
@@ -19,6 +23,8 @@ public class WebviewActivity extends AppCompatActivity {
         youtube.setBackgroundColor(Color.TRANSPARENT);
         //youtube.setLayerType(WebView.LAYER_TYPE_SOFTWARE, null);
         youtube.setWebViewClient(new MyWebViewClient());
+        //youtube.setWebChromeClient(new WebChromeClient(){});
+        youtube.getSettings().setPluginState(WebSettings.PluginState.ON);
         youtube.getSettings().setJavaScriptEnabled(true);
 
 
@@ -32,7 +38,10 @@ public class WebviewActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_webview);
         bindWebView();
-        youtube.loadUrl("http://ftp2.plkhealth.go.th/patientbookapi/frontend/web/patient/youtube");
+
+        String api_url=Prefs.getString("api_url","");
+       youtube.loadUrl(api_url+"frontend/web/patient/youtube");
+
     }
 
     private class MyWebViewClient extends WebViewClient {
