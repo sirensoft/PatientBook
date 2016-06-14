@@ -41,7 +41,8 @@
                         android:background="#00000000"
                         android:onClick="btnExamResult_Click"
                         android:scaleType="fitCenter"
-                        android:src="@drawable/syringe" />
+                        android:src="@drawable/syringe"
+                        android:id="@+id/btn_lab" />
 
                     <TextView
                         android:layout_width="wrap_content"

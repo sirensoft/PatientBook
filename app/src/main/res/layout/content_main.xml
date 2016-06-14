@@ -37,7 +37,8 @@
                     android:background="#00000000"
                     android:onClick="btnPersonalInfo_Click"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/profile" />
+                    android:src="@drawable/profile"
+                    android:id="@+id/btn_personal_info" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -62,7 +63,8 @@
                     android:background="#00000000"
                     android:onClick="btnHospital_Click"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/hospital" />
+                    android:src="@drawable/hospital"
+                    android:id="@+id/btn_hospital" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -115,7 +117,7 @@
 
                 <ImageButton
 
-                    android:id="@+id/btn_promotion"
+                    android:id="@+id/btn_risk"
                     android:layout_width="72dp"
                     android:layout_height="72dp"
                     android:layout_gravity="center_horizontal"
@@ -154,7 +156,8 @@
                     android:background="#00000000"
                     android:onClick="btnDoctorSuggestion_Click"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/guide" />
+                    android:src="@drawable/guide"
+                    android:id="@+id/btn_media" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -179,7 +182,8 @@
                     android:background="#00000000"
                     android:onClick="btnConsult_Click"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/confer" />
+                    android:src="@drawable/confer"
+                    android:id="@+id/btn_chat" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -209,7 +213,8 @@
                     android:background="#00000000"
                     android:onClick="btnPersonalRecord_Click"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/record" />
+                    android:src="@drawable/record"
+                    android:id="@+id/btn_personal_record" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -234,7 +239,8 @@
                     android:background="#00000000"
                     android:onClick="btnDoctorVisit_Click"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/visit" />
+                    android:src="@drawable/visit"
+                    android:id="@+id/btn_doctor_visit" />
 
                 <TextView
                     android:layout_width="wrap_content"

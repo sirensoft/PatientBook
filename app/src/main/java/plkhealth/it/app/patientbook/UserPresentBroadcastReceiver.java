@@ -19,7 +19,7 @@ public class UserPresentBroadcastReceiver extends BroadcastReceiver {
          * device wakes up (e.g when the keyguard is gone)
          * */
         if(intent.getAction().equals(Intent.ACTION_USER_PRESENT)){
-            myGlobal.setBadge(context,18);
+            myGlobal.setBadge(context,2);
         }
         else if (intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {
 

@@ -43,9 +43,22 @@ public class MainActivity extends AppCompatActivity {
 
     MyGlobals myGlobal;
 
+    public boolean check_setting(){
+       boolean isSetting = false;
+        if(!Prefs.getString("api_url","").equals("")){
+            isSetting = true;
+        }
+        if(!Prefs.getString("patient_cid","").equals("")){
+            isSetting = true;
+        }
+        if(!Prefs.getString("patient_key","").equals("")){
+            isSetting = true;
+        }
+        return  isSetting;
+    }
 
-    public void check_active(String url) {
-
+    public void check_active() {
+        String url = Prefs.getString("api_url", "") + "frontend/web/patient/check-active?cid=" + Prefs.getString("patient_cid", "");
         StringRequest stringRequest = new StringRequest(com.android.volley.Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
@@ -70,19 +83,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        final View viewParent = findViewById(R.id.myCoordinatorLayout);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        toolbar.setLogo(R.drawable.apps1);
-
-
-
-
-        // set token
+    public void update_token(){
+        if(!check_setting()){
+            return;
+        }
+        // update token to server
         final String firebase_token = FirebaseInstanceId.getInstance().getToken();
         Prefs.putString("token", firebase_token);
         Log.d("token", firebase_token);
@@ -94,6 +99,7 @@ public class MainActivity extends AppCompatActivity {
                 RequestBody body = new FormBody.Builder()
                         .add("token", firebase_token)
                         .add("cid", Prefs.getString("patient_cid", ""))
+                        .add("key_id", Prefs.getString("patient_key", ""))
                         .build();
 
                 Request request = new Request.Builder()
@@ -103,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
 
                 try {
                     client.newCall(request).execute();
+                    Log.d("update token","ok");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -111,6 +118,59 @@ public class MainActivity extends AppCompatActivity {
         }).start();
         // จบ token
 
+
+    }
+
+    public void get_appoint(String url){
+
+    }
+    public void get_media(){
+        if(!check_setting()){
+            return;
+        }
+        check_active();
+        if(!Prefs.getString("is_active","").equals("1")){
+            return;
+        }
+
+        String url = Prefs.getString("api_url","")+"frontend/web/media/check-media?cid="+Prefs.getString("patient_cid","");
+        StringRequest stringRequest = new StringRequest(com.android.volley.Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.d("check media",response);
+                        BadgeView badge = new BadgeView(getApplicationContext(),findViewById(R.id.btn_media));
+                        badge.setText(response);
+                        badge.show();
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+
+            }
+        });
+
+        Volley.newRequestQueue(this).add(stringRequest);
+
+    }
+    public void check_chat(String url){
+
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        final View viewParent = findViewById(R.id.myCoordinatorLayout);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        toolbar.setLogo(R.drawable.apps1);
+        if(!check_setting()){
+            Snackbar snackbar = Snackbar.make(viewParent, "ยังไม่เปิดใช้บริการ", Snackbar.LENGTH_LONG);
+            snackbar.show();
+        }
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -133,21 +193,13 @@ public class MainActivity extends AppCompatActivity {
                         try {
                             Thread.sleep(5000);
                         } catch (Exception e) {
-
+                            e.printStackTrace();
                         }
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                View btn_appointment = findViewById(R.id.btn_appointment);
-                                BadgeView badge1 = new BadgeView(getApplicationContext(), btn_appointment);
-                                badge1.setText("N");
-                                badge1.show();
 
-                                View btn_promotion = findViewById(R.id.btn_promotion);
-                                BadgeView badge2 = new BadgeView(getApplicationContext(), btn_promotion);
-                                badge2.setText("N");
-                                badge2.show();
-
+                                get_media();
 
                                 progress.dismiss();
 
@@ -160,7 +212,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         myGlobal = new MyGlobals(getApplicationContext());
-        myGlobal.setBadge(getApplicationContext(), 0);
+       // myGlobal.setBadge(getApplicationContext(), );
 
 
     }
@@ -168,8 +220,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onResume(){
         super.onResume();
-        String url_check_active = Prefs.getString("api_url", "") + "frontend/web/patient/check-active?cid=" + Prefs.getString("patient_cid", "");
-        check_active(url_check_active);
+
+        update_token();
+        check_active();
+        get_media();
+
+
+
     }
 
     @Override
