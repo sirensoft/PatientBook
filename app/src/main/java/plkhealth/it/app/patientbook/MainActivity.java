@@ -16,6 +16,10 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.pixplicity.easyprefs.library.Prefs;
@@ -24,17 +28,47 @@ import com.readystatesoftware.viewbadger.BadgeView;
 
 import com.loopj.android.http.*;
 
+import java.io.IOException;
+
 import cz.msebera.android.httpclient.Header;
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
 
 
 public class MainActivity extends AppCompatActivity {
 
-
     ProgressDialog progress;
-
 
     MyGlobals myGlobal;
 
+
+    public void check_active(String url) {
+
+        StringRequest stringRequest = new StringRequest(com.android.volley.Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.d("volley",response);
+                        if (response.equals("1")) {
+                            Prefs.putString("is_active", "1");
+
+                        }else{
+                            Prefs.putString("is_active", "0");
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+
+            }
+        });
+
+        Volley.newRequestQueue(this).add(stringRequest);
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,39 +78,47 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setLogo(R.drawable.apps1);
-        //toolbar.setTitle(getResources().getText(R.string.app_title));
-
-        Prefs.putString("group", "risk");
-        String group = Prefs.getString("group", "common");
-
-        FirebaseMessaging.getInstance().subscribeToTopic(group);
-        String firebase_token = FirebaseInstanceId.getInstance().getToken();
-        Prefs.putString("firebase_token", firebase_token);
-        Log.d("Tokend", "InstanceID token: " + firebase_token);
 
 
-        //SharedPreferences.Editor editor = pref.edit();
-        Prefs.putBoolean("patient_activated", true);
-        // editor.putBoolean("patient_activated",true);
-        //editor.apply();
 
 
-        View btn_appointment = findViewById(R.id.btn_appointment);
-        BadgeView badge1 = new BadgeView(this, btn_appointment);
-        badge1.setText("N");
-        badge1.show();
+        // set token
+        final String firebase_token = FirebaseInstanceId.getInstance().getToken();
+        Prefs.putString("token", firebase_token);
+        Log.d("token", firebase_token);
+        final String url_update_token = Prefs.getString("api_url", "") + "frontend/web/media/update-token";
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                OkHttpClient client = new OkHttpClient();
+                RequestBody body = new FormBody.Builder()
+                        .add("token", firebase_token)
+                        .add("cid", Prefs.getString("patient_cid", ""))
+                        .build();
 
-        View btn_promotion = findViewById(R.id.btn_promotion);
-        BadgeView badge2 = new BadgeView(this, btn_promotion);
-        badge2.setText("N");
-        badge2.show();
+                Request request = new Request.Builder()
+                        .url(url_update_token)
+                        .post(body)
+                        .build();
+
+                try {
+                    client.newCall(request).execute();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }).start();
+        // จบ token
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                boolean patient_activated = Prefs.getBoolean("patient_activated", false);
-                if (!patient_activated) {
+
+
+                if (!Prefs.getString("is_active", "").equals("1")) {
                     Snackbar snackbar = Snackbar.make(viewParent, "ไม่ได้รับอนุญาต", Snackbar.LENGTH_LONG);
                     snackbar.show();
                     return;
@@ -96,9 +138,19 @@ public class MainActivity extends AppCompatActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
+                                View btn_appointment = findViewById(R.id.btn_appointment);
+                                BadgeView badge1 = new BadgeView(getApplicationContext(), btn_appointment);
+                                badge1.setText("N");
+                                badge1.show();
+
+                                View btn_promotion = findViewById(R.id.btn_promotion);
+                                BadgeView badge2 = new BadgeView(getApplicationContext(), btn_promotion);
+                                badge2.setText("N");
+                                badge2.show();
+
+
                                 progress.dismiss();
-                                String name = Prefs.getString("patient_cid", "");
-                                Toast.makeText(getApplicationContext(), name, Toast.LENGTH_SHORT).show();
+
                             }
                         });
                     }
@@ -111,41 +163,13 @@ public class MainActivity extends AppCompatActivity {
         myGlobal.setBadge(getApplicationContext(), 0);
 
 
-        // test
-        AsyncHttpClient client = new AsyncHttpClient();
-        client.setTimeout(20000);
-        String cid= "5650201060154";
-        String token = firebase_token;
-        String url = "http://203.157.118.124/api/frontend/web/media/update-token?cid="+cid+"&token="+token;
-        client.get(url, new AsyncHttpResponseHandler() {
-            @Override
-            public void onStart() {
-                // called before request is started
-            }
+    }
 
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, byte[] response) {
-                // called when response HTTP status is "200 OK"
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, byte[] errorResponse, Throwable e) {
-                // called when response HTTP status is "4XX" (eg. 401, 403, 404)L
-                //Log.d("api","eeeee");
-                e.printStackTrace();
-            }
-
-            @Override
-            public void onRetry(int retryNo) {
-                // called when request is retried
-            }
-        });
-
-
-
-
-
-
+    @Override
+    public void onResume(){
+        super.onResume();
+        String url_check_active = Prefs.getString("api_url", "") + "frontend/web/patient/check-active?cid=" + Prefs.getString("patient_cid", "");
+        check_active(url_check_active);
     }
 
     @Override

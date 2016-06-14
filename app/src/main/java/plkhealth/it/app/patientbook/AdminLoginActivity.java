@@ -41,6 +41,7 @@ import static android.Manifest.permission.READ_CONTACTS;
  */
 public class AdminLoginActivity extends AppCompatActivity {
 
+    EditText txt_admin_name,txt_admin_pass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,12 +51,19 @@ public class AdminLoginActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        txt_admin_name = (EditText) findViewById(R.id.txt_admin_name);
+        txt_admin_pass = (EditText)findViewById(R.id.txt_admin_pass);
+
     }
 
     public void btnAdminLogin_Click(View view) {
-        Intent itent = new Intent(this,AdminSettingActivity.class);
-        startActivity(itent);
-        finish();
+
+        if(txt_admin_name.getText().toString().equals("admin") && txt_admin_pass.getText().toString().equals("112233")) {
+            Intent itent = new Intent(this, AdminSettingActivity.class);
+            startActivity(itent);
+            finish();
+
+        }
     }
 
     @Override
