@@ -124,6 +124,7 @@ public class MainActivity extends AppCompatActivity {
     public void get_appoint(String url){
 
     }
+
     public void get_media(){
         if(!check_setting()){
             return;
@@ -139,9 +140,11 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         Log.d("check media",response);
-                        BadgeView badge = new BadgeView(getApplicationContext(),findViewById(R.id.btn_media));
-                        badge.setText(response);
-                        badge.show();
+                       if(!response.equals("0") && !response.equals("")) {
+                           BadgeView badge = new BadgeView(getApplicationContext(), findViewById(R.id.btn_media));
+                           badge.setText(response);
+                           badge.show();
+                       }
 
                     }
                 }, new Response.ErrorListener() {
@@ -155,6 +158,7 @@ public class MainActivity extends AppCompatActivity {
         Volley.newRequestQueue(this).add(stringRequest);
 
     }
+
     public void check_chat(String url){
 
     }

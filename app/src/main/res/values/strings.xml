@@ -3,6 +3,7 @@
     <string name="app_title">Care Alert</string>
     <string name="action_settings">ตั้งค่า..</string>
     <string name="title_activity_admin_login">Login</string>
+    <string name="title_activity_media">MediaActivity</string>
 
 
 </resources>
