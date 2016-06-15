@@ -272,8 +272,9 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void btnDoctorSuggestion_Click(View view) {
-        Intent intent = new Intent(this, WebviewActivity.class);
+
+    public void  btn_media_click(View view){
+        Intent intent = new Intent(this, MediaActivity.class);
         startActivity(intent);
     }
 

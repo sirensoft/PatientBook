@@ -10,7 +10,7 @@
     <LinearLayout android:id="@+id/thumbnail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="3dip"
+        android:padding="10dip"
         android:layout_alignParentLeft="true"
         android:background="@drawable/image_bg"
         android:layout_marginRight="5dip">
@@ -50,13 +50,13 @@
 
     <!-- Rightend Duration -->
     <TextView
-        android:id="@+id/media_date"
+        android:id="@+id/read"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@id/title"
         android:gravity="right"
-        android:text="2016-06-10"
+        android:text="read"
         android:layout_marginRight="5dip"
         android:textSize="10dip"
         android:textColor="#10bcc9"
@@ -67,6 +67,17 @@
         android:layout_height="wrap_content"
         android:src="@drawable/arrow"
         android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"/>
+        android:layout_centerVertical="true"
+        android:id="@+id/imageView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2016-06-10"
+        android:textSize="10dip"
+        android:id="@+id/date"
+        android:layout_below="@+id/descript"
+        android:layout_toRightOf="@+id/thumbnail"
+        android:layout_toEndOf="@+id/thumbnail" />
 
 </RelativeLayout>
