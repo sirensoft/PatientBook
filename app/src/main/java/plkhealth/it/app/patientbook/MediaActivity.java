@@ -1,9 +1,12 @@
 package plkhealth.it.app.patientbook;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -32,6 +35,18 @@ public class MediaActivity extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 R.layout.media_list, R.id.title, list_items);
         listViewMedia.setAdapter(adapter);
+
+        listViewMedia.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+
+                Intent intent = new Intent(getApplicationContext(),WebviewActivity.class);
+                startActivity(intent);
+
+            }
+        });
 
     }
 
