@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -47,22 +48,33 @@ public class MediaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         myHolder.descript.setText(current.mDesc);
         myHolder.read.setText(current.mRead);
         myHolder.date.setText(current.mDate);
-        Glide.with(context).load(R.drawable.apps).into(myHolder.list_image);
+        if(current.mType==1) {
+            Glide.with(context).load(R.drawable.apps).into(myHolder.list_image);
+        }else {
+            Glide.with(context).load(R.drawable.rihanna).into(myHolder.list_image);
+        }
+
+
 
     }
+
+
+
 
     @Override
     public int getItemCount() {
         return data.size();
     }
 
-    class MyHolder extends RecyclerView.ViewHolder{
+    class MyHolder extends RecyclerView.ViewHolder  {
 
         TextView title;
         ImageView list_image;
         TextView descript;
         TextView read;
         TextView date;
+
+
 
         // create constructor to get widget reference
         public MyHolder(View itemView) {
@@ -72,10 +84,16 @@ public class MediaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             descript = (TextView) itemView.findViewById(R.id.descript);
             read = (TextView) itemView.findViewById(R.id.read);
             date = (TextView) itemView.findViewById(R.id.date);
+
         }
 
+
     }
-
-
-
 }
+
+
+
+
+
+
+
