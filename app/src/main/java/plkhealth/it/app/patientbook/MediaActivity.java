@@ -58,8 +58,12 @@ public class MediaActivity extends AppCompatActivity {
         listViewMedia.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), listViewMedia, new ClickListener() {
             @Override
             public void onClick(View view, int position) {
-               MediaModel media = data.get(position);
-                Toast.makeText(getApplicationContext(), media.mId + " is selected!", Toast.LENGTH_SHORT).show();
+               //MediaModel media = data.get(position);
+               if(data.get(position).mId=="m001"){
+                   Intent intent = new Intent(getApplicationContext(),WebviewActivity.class);
+                   startActivity(intent);
+               }
+
             }
 
             @Override
