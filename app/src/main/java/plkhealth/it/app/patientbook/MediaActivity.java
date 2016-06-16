@@ -3,6 +3,8 @@ package plkhealth.it.app.patientbook;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -10,8 +12,11 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MediaActivity extends AppCompatActivity {
-    ListView listViewMedia;
+    RecyclerView listViewMedia;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,33 +25,28 @@ public class MediaActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setTitle("รายการแนะนำจากหมอ");
-        listViewMedia = (ListView) findViewById(R.id.listViewMedia);
+        List<MediaModel> data=new ArrayList<>();
 
-        String[] list_items = new String[]{"Android List View",
-                "Adapter implementation",
-                "Simple List View In Android",
-                "Create List View Android",
-                "Android Example",
-                "List View Source Code",
-                "List View Array Adapter",
-                "Android Example List View"
-        };
+        MediaModel model = new MediaModel();
+        model.mTitle = "ข่าว 1";
+        model.mDate = "xxxx";
+        model.mDesc = "kkkk";
+        model.mRead = "อ่านแล้ว";
+        data.add(model);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                R.layout.media_list, R.id.title, list_items);
+        MediaModel model2 = new MediaModel();
+        model2.mTitle = "ข่าว 1";
+        model2.mDate = "xxxx";
+        model2.mDesc = "kkkk";
+        //model.mRead = "อ่านแล้ว";
+        data.add(model2);
+
+        listViewMedia = (RecyclerView) findViewById(R.id.listViewMedia);
+        MediaAdapter adapter = new MediaAdapter(getApplicationContext(),data);
         listViewMedia.setAdapter(adapter);
+        listViewMedia.setLayoutManager(new LinearLayoutManager(MediaActivity.this));
 
-        listViewMedia.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
-
-                Intent intent = new Intent(getApplicationContext(),WebviewActivity.class);
-                startActivity(intent);
-
-            }
-        });
 
     }
 
