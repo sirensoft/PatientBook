@@ -43,15 +43,15 @@ public class MediaActivity extends AppCompatActivity {
     final List<MediaModel> listData = new ArrayList<>();
     MediaAdapter adapter;
 
-    public  void watchYoutubeVideo(String id){
-        Log.d("youtube",id);
+    public  void watchYoutubeVideo(String youtube_id){
+        Log.d("youtube",youtube_id);
         try {
-            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube:" + id));
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube:" + youtube_id));
             intent.putExtra("force_fullscreen",true);
             startActivity(intent);
         } catch (ActivityNotFoundException ex) {
             Intent intent = new Intent(Intent.ACTION_VIEW,
-                    Uri.parse("http://www.youtube.com/watch?v=" + id));
+                    Uri.parse("http://www.youtube.com/watch?v=" + youtube_id));
             intent.putExtra("force_fullscreen",true);
             startActivity(intent);
         }
