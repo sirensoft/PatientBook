@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -42,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
     ProgressDialog progress;
 
     MyGlobals myGlobal;
+    ImageButton btn_media;
 
     public boolean check_setting(){
        boolean isSetting = false;
@@ -125,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void get_media(){
+    public void get_media(final View v){
         if(!check_setting()){
             return;
         }
@@ -141,8 +143,9 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         Log.d("check media",response);
                       if(!response.equals("0") && !response.equals("")) {
-                           BadgeView badge = new BadgeView(getApplicationContext(), findViewById(R.id.btn_media));
+                           BadgeView badge = new BadgeView(getApplicationContext(),v );
                            badge.setText(response);
+                          Log.d("check media2",response);
                            badge.show();
                        }
 
@@ -175,6 +178,8 @@ public class MainActivity extends AppCompatActivity {
             Snackbar snackbar = Snackbar.make(viewParent, "ยังไม่เปิดใช้บริการ", Snackbar.LENGTH_LONG);
             snackbar.show();
         }
+        btn_media = (ImageButton) findViewById(R.id.btn_media);
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 
@@ -204,8 +209,10 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void run() {
 
-                                //get_media();
-                                MainActivity.this.onResume();
+
+                                btn_media = (ImageButton) findViewById(R.id.btn_media);
+                                get_media(btn_media);
+
 
                                 progress.dismiss();
 
@@ -225,12 +232,17 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onResume(){
-        super.onResume();
+        //setContentView(null);
 
         update_token();
         check_active();
-        get_media();
 
+        get_media(btn_media);
+
+
+
+
+        super.onResume();
 
 
     }

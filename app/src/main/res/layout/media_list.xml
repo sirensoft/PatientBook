@@ -30,6 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/thumbnail"
         android:layout_toRightOf="@+id/thumbnail"
+        android:layout_toLeftOf="@+id/read"
         android:text="Rihanna Love the way lie"
         android:textColor="#040404"
         android:typeface="sans"
@@ -57,6 +58,7 @@
         android:layout_alignTop="@id/title"
         android:gravity="right"
         android:text="read"
+
         android:layout_marginRight="5dip"
         android:textSize="10dip"
         android:textColor="#10bcc9"
