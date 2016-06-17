@@ -140,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         Log.d("check media",response);
-                       if(!response.equals("0") && !response.equals("")) {
+                      if(!response.equals("0") && !response.equals("")) {
                            BadgeView badge = new BadgeView(getApplicationContext(), findViewById(R.id.btn_media));
                            badge.setText(response);
                            badge.show();
@@ -177,6 +177,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -203,7 +204,8 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void run() {
 
-                                get_media();
+                                //get_media();
+                                MainActivity.this.onResume();
 
                                 progress.dismiss();
 

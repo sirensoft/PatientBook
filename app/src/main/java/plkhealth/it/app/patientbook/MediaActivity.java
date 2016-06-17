@@ -33,10 +33,15 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.RequestBody;
 
 public class MediaActivity extends AppCompatActivity {
     RecyclerView listViewMedia;
@@ -132,7 +137,44 @@ public class MediaActivity extends AppCompatActivity {
             public void onClick(View view, int position) {
                 //MediaModel media = data.get(position);
                 if (listData.get(position).mType == 0) {
+                    final String cid = listData.get(position).mCid;
+                    final String mdate = listData.get(position).mDate;
+                    final String mid = listData.get(position).mId;
+
                     watchYoutubeVideo(listData.get(position).mUrl);
+
+                    //update read
+
+                    final String url_update_read = Prefs.getString("api_url", "") + "frontend/web/media/read";
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            OkHttpClient client = new OkHttpClient();
+                            RequestBody body = new FormBody.Builder()
+                                    .add("cid", cid)
+                                    .add("mdate", mdate)
+                                    .add("mid",mid)
+                                    .build();
+
+                            okhttp3.Request request = new okhttp3.Request.Builder()
+                                    .url(url_update_read)
+                                    .post(body)
+                                    .build();
+
+                            try {
+                                client.newCall(request).execute();
+                                Log.d("update read","ok");
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+
+                        }
+                    }).start();
+                    // จบ token
+
+                    // end update
+
+
                 }
 
             }
