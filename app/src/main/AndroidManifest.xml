@@ -64,10 +64,7 @@
 
         <activity
             android:name=".WebviewActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:hardwareAccelerated="true"
-            android:screenOrientation="landscape"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
+            />
         <activity android:name=".MediaActivity"></activity>
     </application>
 

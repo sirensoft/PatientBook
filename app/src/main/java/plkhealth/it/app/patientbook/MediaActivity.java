@@ -136,46 +136,47 @@ public class MediaActivity extends AppCompatActivity {
             @Override
             public void onClick(View view, int position) {
                 //MediaModel media = data.get(position);
+                final String cid = listData.get(position).mCid;
+                final String mdate = listData.get(position).mDate;
+                final String mid = listData.get(position).mId;
                 if (listData.get(position).mType == 0) {
-                    final String cid = listData.get(position).mCid;
-                    final String mdate = listData.get(position).mDate;
-                    final String mid = listData.get(position).mId;
 
                     watchYoutubeVideo(listData.get(position).mUrl);
-
-                    //update read
-
-                    final String url_update_read = Prefs.getString("api_url", "") + "frontend/web/media/read";
-                    new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            OkHttpClient client = new OkHttpClient();
-                            RequestBody body = new FormBody.Builder()
-                                    .add("cid", cid)
-                                    .add("mdate", mdate)
-                                    .add("mid",mid)
-                                    .build();
-
-                            okhttp3.Request request = new okhttp3.Request.Builder()
-                                    .url(url_update_read)
-                                    .post(body)
-                                    .build();
-
-                            try {
-                                client.newCall(request).execute();
-                                Log.d("update read","ok");
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-
-                        }
-                    }).start();
-                    // จบ token
-
-                    // end update
-
-
                 }
+                if(listData.get(position).mType == 1){
+                    Intent intent = new Intent(getApplicationContext(),WebviewActivity.class);
+                    intent.putExtra("url",listData.get(position).mUrl);
+                    intent.putExtra("title",listData.get(position).mTitle);
+                    Log.d("URL",listData.get(position).mUrl);
+                    startActivity(intent);
+                }
+
+                //update read
+                final String url_update_read = Prefs.getString("api_url", "") + "frontend/web/media/read";
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        OkHttpClient client = new OkHttpClient();
+                        RequestBody body = new FormBody.Builder()
+                                .add("cid", cid)
+                                .add("mdate", mdate)
+                                .add("mid",mid)
+                                .build();
+
+                        okhttp3.Request request = new okhttp3.Request.Builder()
+                                .url(url_update_read)
+                                .post(body)
+                                .build();
+
+                        try {
+                            client.newCall(request).execute();
+                            Log.d("update read","ok");
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }).start();
 
             }
 
