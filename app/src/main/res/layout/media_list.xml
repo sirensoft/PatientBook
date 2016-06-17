@@ -75,7 +75,8 @@
         android:layout_height="wrap_content"
         android:text="2016-06-10"
         android:textSize="10dip"
-        android:id="@+id/date"
+        android:id="@+id/send_date"
+        android:textColor="#10bcc9"
         android:layout_below="@+id/descript"
         android:layout_toRightOf="@+id/thumbnail"
         android:layout_toEndOf="@+id/thumbnail" />

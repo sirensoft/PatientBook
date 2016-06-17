@@ -10,6 +10,9 @@ public class MediaModel {
     public String mRead;
     public String mDate;
     public int mType=0;
-    public String mId="";
+    public String mId;
+    public String mUrl;
+    public String mCid;
+
 
 }

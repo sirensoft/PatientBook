@@ -47,7 +47,7 @@ public class MediaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         myHolder.title.setText(current.mTitle);
         myHolder.descript.setText(current.mDesc);
         myHolder.read.setText(current.mRead);
-        myHolder.date.setText(current.mDate);
+        myHolder.send_date.setText(current.mDate);
         if(current.mType==1) {
             Glide.with(context).load(R.drawable.apps).into(myHolder.list_image);
         }else {
@@ -72,7 +72,7 @@ public class MediaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         ImageView list_image;
         TextView descript;
         TextView read;
-        TextView date;
+        TextView send_date;
 
 
 
@@ -83,7 +83,7 @@ public class MediaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             list_image= (ImageView) itemView.findViewById(R.id.list_image);
             descript = (TextView) itemView.findViewById(R.id.descript);
             read = (TextView) itemView.findViewById(R.id.read);
-            date = (TextView) itemView.findViewById(R.id.date);
+            send_date = (TextView) itemView.findViewById(R.id.send_date);
 
         }
 
