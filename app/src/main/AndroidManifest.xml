@@ -45,7 +45,6 @@
                 <action android:name="android.intent.action.ACTION_SHUTDOWN" />
             </intent-filter>
         </receiver>
-
         <activity android:name=".DoctorLoginActivity" />
         <activity android:name=".DoctorVisitActivity" />
         <activity android:name=".HospitalActivity" />

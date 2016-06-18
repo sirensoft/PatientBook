@@ -41,8 +41,8 @@ import okhttp3.RequestBody;
 public class MainActivity extends AppCompatActivity {
 
     ProgressDialog progress;
+    MyGlobals myGlobals;
 
-    MyGlobals myGlobal;
     ImageButton btn_media;
 
     public boolean check_setting(){
@@ -180,14 +180,11 @@ public class MainActivity extends AppCompatActivity {
         }
         btn_media = (ImageButton) findViewById(R.id.btn_media);
 
-
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
                 if (!Prefs.getString("is_active", "").equals("1")) {
                     Snackbar snackbar = Snackbar.make(viewParent, "ไม่ได้รับอนุญาต", Snackbar.LENGTH_LONG);
                     snackbar.show();
@@ -208,14 +205,9 @@ public class MainActivity extends AppCompatActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-
-
                                 btn_media = (ImageButton) findViewById(R.id.btn_media);
                                 get_media(btn_media);
-
-
                                 progress.dismiss();
-
                             }
                         });
                     }
@@ -224,27 +216,20 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        myGlobal = new MyGlobals(getApplicationContext());
-       // myGlobal.setBadge(getApplicationContext(), );
+    myGlobals = new MyGlobals(getApplicationContext());
+        myGlobals.setBadge(getApplicationContext(),-1);
 
 
     }
 
     @Override
     public void onResume(){
-        //setContentView(null);
 
         update_token();
         check_active();
 
         get_media(btn_media);
-
-
-
-
         super.onResume();
-
-
     }
 
     @Override
