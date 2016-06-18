@@ -26,8 +26,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.pixplicity.easyprefs.library.Prefs;
+import com.readystatesoftware.viewbadger.BadgeView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -202,6 +204,31 @@ public class MediaActivity extends AppCompatActivity {
 
     }
 
+
+    @Override
+    public void onDestroy(){
+
+        String url = Prefs.getString("api_url","")+"frontend/web/media/check-media?cid="+Prefs.getString("patient_cid","");
+        StringRequest stringRequest = new StringRequest(com.android.volley.Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.d("destroy media",response);
+                        Prefs.putString("media_count",response);
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+
+            }
+        });
+
+        Volley.newRequestQueue(this).add(stringRequest);
+
+        super.onDestroy();
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem menuItem) {

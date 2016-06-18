@@ -147,6 +147,7 @@ public class MainActivity extends AppCompatActivity {
                            badge.setText(response);
                           Log.d("check media2",response);
                            badge.show();
+                          Prefs.putString("media_count",response);
                        }
 
                     }
@@ -179,6 +180,7 @@ public class MainActivity extends AppCompatActivity {
             snackbar.show();
         }
         btn_media = (ImageButton) findViewById(R.id.btn_media);
+        get_media(btn_media);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 
@@ -216,8 +218,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-    myGlobals = new MyGlobals(getApplicationContext());
-        myGlobals.setBadge(getApplicationContext(),-1);
+    //myGlobals = new MyGlobals(getApplicationContext());
+        //myGlobals.setBadge(getApplicationContext(),-1);
 
 
     }
@@ -228,7 +230,7 @@ public class MainActivity extends AppCompatActivity {
         update_token();
         check_active();
 
-        get_media(btn_media);
+
         super.onResume();
     }
 

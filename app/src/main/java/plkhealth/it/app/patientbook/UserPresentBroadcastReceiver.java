@@ -23,7 +23,6 @@ public class UserPresentBroadcastReceiver extends BroadcastReceiver {
     Context mContext;
 
 
-
     @Override
     public void onReceive(final Context context, Intent intent) {
         myGlobal = new MyGlobals(context);
@@ -31,33 +30,21 @@ public class UserPresentBroadcastReceiver extends BroadcastReceiver {
         /*Sent when the user is present after
          * device wakes up (e.g when the keyguard is gone)
          * */
-        if(intent.getAction().equals(Intent.ACTION_USER_PRESENT)){
-            //
-            String url = Prefs.getString("api_url","")+"frontend/web/media/check-media?cid="+Prefs.getString("patient_cid","");
-            StringRequest stringRequest = new StringRequest(com.android.volley.Request.Method.GET, url,
-                    new Response.Listener<String>() {
-                        @Override
-                        public void onResponse(String response) {
-                            Log.d("check media",response);
-                            int num = Integer.parseInt(response);
-                            if(num==0){ num = -1;}
-                            myGlobal.setBadge(context,num);
+        if (intent.getAction().equals(Intent.ACTION_USER_PRESENT)) {
 
-                        }
-                    }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    error.printStackTrace();
-
-                }
-            });
-
-            Volley.newRequestQueue(mContext).add(stringRequest);
+            String media_count = Prefs.getString("media_count","0");
+            int num = Integer.parseInt(media_count);
+            if (num == 0) {
+                num = -1;
+            }
+            myGlobal.setBadge(context, num);
 
 
+        } else if (intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {
 
-        }
-        else if (intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {
+
+        } else if (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {
+
 
         }
 
