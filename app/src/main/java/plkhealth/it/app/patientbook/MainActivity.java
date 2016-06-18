@@ -291,5 +291,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MediaActivity.class);
         startActivity(intent);
     }
+    public void  btn_appoint_click(View view){
+        Intent intent = new Intent(this, AppointActivity.class);
+        startActivity(intent);
+    }
 
 }

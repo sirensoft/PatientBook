@@ -62,10 +62,9 @@
             </intent-filter>
         </service>
 
-        <activity
-            android:name=".WebviewActivity"
-            />
-        <activity android:name=".MediaActivity"></activity>
+        <activity android:name=".WebviewActivity" />
+        <activity android:name=".MediaActivity" />
+        <activity android:name=".AppointActivity"></activity>
     </application>
 
 </manifest>
