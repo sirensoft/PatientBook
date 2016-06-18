@@ -101,7 +101,7 @@ public class PersonalInfoActivity extends AppCompatActivity {
         myGlobal = new MyGlobals(getApplicationContext());
 
         String patient_cid = myGlobal.getPatientCid();
-        String ApiUrl = myGlobal.getApiUrl();
+        final String ApiUrl = myGlobal.getApiUrl();
 
         bindWebView();
         bindWidget();
@@ -116,12 +116,12 @@ public class PersonalInfoActivity extends AppCompatActivity {
             public void onClick(View view) {
                 webView.loadData("กรุณารอสักครู่...", "text/html; charset=utf-8", "UTF-8");
                 loadNewData(url);
-                Glide.with(getApplicationContext()).load("https://cdn4.iconfinder.com/data/icons/LUMINA/web_design/png/400/members.png").into(img_personal_info);
+                Glide.with(getApplicationContext()).load(ApiUrl + "frontend/web/patient/image?cid="+Prefs.getString("patient_cid","")).into(img_personal_info);
 
             }
         });
 
-        Glide.with(getApplicationContext()).load("https://cdn4.iconfinder.com/data/icons/LUMINA/web_design/png/400/members.png").into(img_personal_info);
+        Glide.with(getApplicationContext()).load(ApiUrl + "frontend/web/patient/image?cid="+Prefs.getString("patient_cid","")).into(img_personal_info);
 
 
 

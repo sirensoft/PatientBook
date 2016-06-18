@@ -47,6 +47,7 @@ public class MediaActivity extends AppCompatActivity {
     RecyclerView listViewMedia;
     final List<MediaModel> listData = new ArrayList<>();
     MediaAdapter adapter;
+    String req_url;
 
     public  void watchYoutubeVideo(String youtube_id){
         Log.d("youtube",youtube_id);
@@ -64,6 +65,7 @@ public class MediaActivity extends AppCompatActivity {
 
     private void makeRequest(String url) {
         Log.d("Volley", url);
+
 
         JsonArrayRequest request = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
 
@@ -119,19 +121,19 @@ public class MediaActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setTitle("หมอแนะนำ");
-        adapter = new MediaAdapter(getApplicationContext(), listData);
 
-        String req_url = Prefs.getString("api_url", "") + "frontend/web/media/list-media?cid=" + Prefs.getString("patient_cid", "");
+
+        req_url = Prefs.getString("api_url", "") + "frontend/web/media/list-media?cid=" + Prefs.getString("patient_cid", "");
         makeRequest(req_url);
 
-
         listViewMedia = (RecyclerView) findViewById(R.id.listViewMedia);
-
+        adapter = new MediaAdapter(getApplicationContext(), listData);
+        listViewMedia.setAdapter(adapter);
 
         listViewMedia.setLayoutManager(new LinearLayoutManager(MediaActivity.this));
         listViewMedia.setItemAnimator(new DefaultItemAnimator());
         listViewMedia.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
-        listViewMedia.setAdapter(adapter);
+
         listViewMedia.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), listViewMedia, new ClickListener() {
             @Override
             public void onClick(View view, int position) {
@@ -171,6 +173,7 @@ public class MediaActivity extends AppCompatActivity {
                         try {
                             client.newCall(request).execute();
                             Log.d("update read","ok");
+
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -185,6 +188,16 @@ public class MediaActivity extends AppCompatActivity {
 
             }
         }));
+
+
+    }
+
+    @Override
+    public void  onResume(){
+
+        Log.d("onResume","onResume");
+        super.onResume();
+
 
 
     }
