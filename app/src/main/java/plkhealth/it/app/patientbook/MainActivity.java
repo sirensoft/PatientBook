@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.firebase.iid.FirebaseInstanceId;
@@ -28,6 +29,10 @@ import com.readystatesoftware.viewbadger.BadgeView;
 
 
 import com.loopj.android.http.*;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 
@@ -123,7 +128,48 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void get_appoint(String url){
+    public void get_appoint(final  View v){
+        // Request data
+        String cid = Prefs.getString("patient_cid","");
+        String url = Prefs.getString("api_url", "") + "frontend/web/patient/appoint?cid="+cid;
+        Log.d("Url",url);
+
+        JsonArrayRequest request = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
+
+            @Override
+            public void onResponse(JSONArray response) {
+                Log.d("volley res", response.toString());
+
+                try {
+
+                    JSONObject js_obj = (JSONObject) response.get(0);
+                    if(!js_obj.getString("cid").equals("null")){
+                        BadgeView badge = new BadgeView(getApplicationContext(),v);
+                        badge.setText("N");
+                        Log.d("check appoint","N");
+                        badge.show();
+                        Prefs.putString("appoint_count","N");
+                    }
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+
+                }
+
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+
+
+        Volley.newRequestQueue(this).add(request);
+
+        // end request
 
     }
 
@@ -181,6 +227,8 @@ public class MainActivity extends AppCompatActivity {
         }
         btn_media = (ImageButton) findViewById(R.id.btn_media);
         get_media(btn_media);
+        ImageButton btn_appoint = (ImageButton)findViewById(R.id.btn_appointment);
+        get_appoint(btn_appoint);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 

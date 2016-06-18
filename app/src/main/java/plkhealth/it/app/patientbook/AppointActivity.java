@@ -1,10 +1,14 @@
 package plkhealth.it.app.patientbook;
 
+import android.app.ProgressDialog;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -67,17 +71,7 @@ public class AppointActivity extends AppCompatActivity {
         return String.format("%s %s %s", day,Months[month],year+543);
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_appoint);
-        bindWidget();
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        setTitle("หมอนัด");
-        view_appoint = (View) findViewById(R.id.view_appoint);
-        //view_appoint.setVisibility(View.GONE);
-
+    void get_appoint(){
         // Request data
         String cid = Prefs.getString("patient_cid","");
         String url = Prefs.getString("api_url", "") + "frontend/web/patient/appoint?cid="+cid;
@@ -106,6 +100,8 @@ public class AppointActivity extends AppCompatActivity {
 
                     if (js_obj.getString("cid").equals("null")) {
                         view_appoint.setVisibility(View.GONE);
+                    }else{
+                        view_appoint.setVisibility(View.VISIBLE);
                     }
 
 
@@ -130,6 +126,50 @@ public class AppointActivity extends AppCompatActivity {
         Volley.newRequestQueue(this).add(request);
 
         // end request
+
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_appoint);
+        final View viewParent = findViewById(R.id.layout_appoint);
+        bindWidget();
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setTitle("หมอนัด");
+        view_appoint = (View) findViewById(R.id.view_appoint);
+
+
+        get_appoint();
+
+
+
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_appoint);
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        // do the thing that takes a long time
+                        try {
+                            //Thread.sleep(5000);
+                            get_appoint();
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }).start();
+
+            }
+        });
+
 
     }
 
