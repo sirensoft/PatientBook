@@ -112,7 +112,7 @@ public class PersonalInfoActivity extends AppCompatActivity {
         webView.loadData(Prefs.getString("personal_info", ""), "text/html; charset=utf-8", "UTF-8");
 
 
-        final String url_info = ApiUrl+"frontend/web/patient/info?cid=3650200479431";
+        final String url_info = ApiUrl+"frontend/web/patient/info?cid="+Prefs.getString("patient_cid","");
         Log.d("ptinfo",url_info);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_personal_info);

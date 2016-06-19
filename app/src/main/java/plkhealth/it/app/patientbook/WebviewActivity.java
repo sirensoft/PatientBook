@@ -44,7 +44,24 @@ public class WebviewActivity extends AppCompatActivity {
 
 
         this.webview = (WebView)findViewById(R.id.mywebview);
-        webview.setWebViewClient(new MyBrowser());
+        webview.setWebViewClient(new MyBrowser(){
+            public void onReceivedError(WebView webView, int errorCode, String description, String failingUrl) {
+                /*try {
+                    webView.stopLoading();
+                } catch (Exception e) {
+                }
+                try {
+                    webView.clearView();
+                } catch (Exception e) {
+                }
+                if (webView.canGoBack()) {
+                    webView.goBack();
+                }*/
+                //webView.loadUrl("about:blank");
+                webView.loadData("<h3>อุปกรณ์ไม่เชื่อมต่ออินเตอร์เน็ต</h3>","text/html; charset=utf-8", "UTF-8");
+                super.onReceivedError(webView, errorCode, description, failingUrl);
+            }
+        });
 
         WebSettings settings = webview.getSettings();
         settings.setJavaScriptEnabled(true);
