@@ -335,5 +335,11 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, RiskActivity.class);
         startActivity(intent);
     }
+    public void btn_input_click(View view){
+
+        Intent intent = new Intent(this, PatientInputListActivity.class);
+        startActivity(intent);
+
+    }
 
 }
