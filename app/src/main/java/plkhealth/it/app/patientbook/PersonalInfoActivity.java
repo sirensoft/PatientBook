@@ -51,6 +51,9 @@ public class PersonalInfoActivity extends AppCompatActivity {
         webView.setWebViewClient(new MyWebViewClient());
         webView.getSettings().setJavaScriptEnabled(true);
 
+        webView.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
+        webView.setScrollbarFadingEnabled(true);
+
     }
     private void bindWidget(){
         img_personal_info = (ImageView)findViewById(R.id.img_personal_info);
@@ -58,7 +61,7 @@ public class PersonalInfoActivity extends AppCompatActivity {
 
     private void loadNewData(String url) {
         // Request a string response
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+        StringRequest stringRequest = new StringRequest(url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -96,7 +99,7 @@ public class PersonalInfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_personal_info);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        setTitle("ข้อมูลส่วนตัว");
+        setTitle("ข้อมูลส่วนบุคคล");
 
         myGlobal = new MyGlobals(getApplicationContext());
 
@@ -107,15 +110,18 @@ public class PersonalInfoActivity extends AppCompatActivity {
         bindWidget();
 
         webView.loadData(Prefs.getString("personal_info", ""), "text/html; charset=utf-8", "UTF-8");
-        final String url = ApiUrl + "/frontend/web/patient/index?cid=" + patient_cid;
 
+
+        final String url_info = ApiUrl+"frontend/web/patient/info?cid=3650200479431";
+        Log.d("ptinfo",url_info);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_personal_info);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 webView.loadData("กรุณารอสักครู่...", "text/html; charset=utf-8", "UTF-8");
-                loadNewData(url);
+                loadNewData(url_info);
+                Log.d("ptinfo",url_info);
                 Glide.with(getApplicationContext()).load(ApiUrl + "frontend/web/patient/image?cid="+Prefs.getString("patient_cid","")).into(img_personal_info);
 
             }

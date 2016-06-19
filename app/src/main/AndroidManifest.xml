@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- Network State Permissions -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
 
     <application
         android:name=".PatientBookApplication"
@@ -45,6 +46,7 @@
                 <action android:name="android.intent.action.ACTION_SHUTDOWN" />
             </intent-filter>
         </receiver>
+
         <activity android:name=".DoctorLoginActivity" />
         <activity android:name=".DoctorVisitActivity" />
         <activity android:name=".HospitalActivity" />
@@ -63,7 +65,8 @@
 
         <activity android:name=".WebviewActivity" />
         <activity android:name=".MediaActivity" />
-        <activity android:name=".AppointActivity"></activity>
+        <activity android:name=".AppointActivity" />
+        <activity android:name=".RiskActivity"></activity>
     </application>
 
 </manifest>

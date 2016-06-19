@@ -45,7 +45,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="ข้อมูลส่วนตัว"
+                    android:text="ข้อมูลส่วนบุคคล"
 
                     android:textSize="16dp" />
             </LinearLayout>

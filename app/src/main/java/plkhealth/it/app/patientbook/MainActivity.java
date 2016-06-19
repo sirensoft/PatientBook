@@ -331,4 +331,9 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void btnRisk_Click(View view){
+        Intent intent = new Intent(this, RiskActivity.class);
+        startActivity(intent);
+    }
+
 }
