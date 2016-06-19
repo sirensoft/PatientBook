@@ -27,7 +27,9 @@ public class PatientInputListActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-
+                Intent itent = new Intent(getApplicationContext(),PatientInputAddActivity.class);
+                itent.putExtra("cid", Prefs.getString("patient_cid",""));
+                startActivity(itent);
             }
         });
 

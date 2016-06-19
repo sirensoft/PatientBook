@@ -68,7 +68,8 @@
         <activity android:name=".AppointActivity" />
         <activity android:name=".RiskActivity" />
         <activity android:name=".PatientInputListActivity" />
-        <activity android:name=".ChartActivity"></activity>
+        <activity android:name=".ChartActivity" />
+        <activity android:name=".PatientInputAddActivity"></activity>
     </application>
 
 </manifest>
