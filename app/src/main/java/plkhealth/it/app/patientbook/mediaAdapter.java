@@ -49,9 +49,10 @@ public class MediaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         myHolder.read.setText(current.mRead);
         myHolder.send_date.setText(current.mDate);
         if(current.mType==1) {
-            Glide.with(context).load(R.drawable.apps).into(myHolder.list_image);
+            Glide.with(context).load(R.drawable.document).into(myHolder.list_image);
         }else {
-            Glide.with(context).load(R.drawable.rihanna).into(myHolder.list_image);
+            String thumb = "http://img.youtube.com/vi/"+current.mUrl+"/default.jpg";
+            Glide.with(context).load(thumb).into(myHolder.list_image);
         }
 
 
