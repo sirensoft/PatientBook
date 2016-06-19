@@ -2,9 +2,11 @@ package plkhealth.it.app.patientbook;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -17,6 +19,7 @@ import com.pixplicity.easyprefs.library.Prefs;
 public class RiskActivity extends AppCompatActivity {
 
     WebView webView;
+    View view_risk;
 
     private void loadNewData(String url) {
         // Request a string response
@@ -25,9 +28,7 @@ public class RiskActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
 
-
-                        //Prefs.putString("patient_risk", response);
-
+                        Prefs.putString("patient_risk", response);
 
                         //String patient_risk = Prefs.getString("patient_risk", "");
 
@@ -39,7 +40,6 @@ public class RiskActivity extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
                 // Error handling
                 webView.loadData("ไม่สามารถเชื่อมต่อข้อมูลได้", "text/html; charset=utf-8", "UTF-8");
                 error.printStackTrace();
@@ -58,6 +58,8 @@ public class RiskActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setTitle("สถานะสุขภาพ/ความเสี่ยง");
+        view_risk = (View)findViewById(R.id.layout_risk) ;
+
         webView = (WebView)findViewById(R.id.web_risk);
         webView.setBackgroundColor(Color.TRANSPARENT);
         webView.setLayerType(WebView.LAYER_TYPE_SOFTWARE, null);
@@ -67,10 +69,35 @@ public class RiskActivity extends AppCompatActivity {
         webView.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
         webView.setScrollbarFadingEnabled(true);
 
-        String url_risk = Prefs.getString("api_url","")+"frontend/web/patient/risk?cid="+Prefs.getString("patient_cid","");
+        final String url_risk = Prefs.getString("api_url","")+"frontend/web/patient/risk?cid="+Prefs.getString("patient_cid","");
 
-        webView.loadData("กรุณารอสักครู่...", "text/html; charset=utf-8", "UTF-8");
-        loadNewData(url_risk);
+        webView.loadData(Prefs.getString("patient_risk",""),"text/html; charset=utf-8", "UTF-8");
+
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_risk);
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                webView.loadData("กรุณารอสักครู่...", "text/html; charset=utf-8", "UTF-8");
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        // do the thing that takes a long time
+                        try {
+
+                            Thread.sleep(3000);
+                           loadNewData(url_risk);
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }).start();
+
+            }
+        });
 
 
 
