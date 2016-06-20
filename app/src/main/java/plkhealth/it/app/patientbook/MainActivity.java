@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
                 RequestBody body = new FormBody.Builder()
                         .add("token", firebase_token)
                         .add("cid", Prefs.getString("patient_cid", ""))
-                        .add("key_id", Prefs.getString("patient_key", ""))
+                        //.add("key_id", Prefs.getString("patient_key", ""))
                         .build();
 
                 Request request = new Request.Builder()
