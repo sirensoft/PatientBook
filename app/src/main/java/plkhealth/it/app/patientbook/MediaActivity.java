@@ -4,6 +4,7 @@ import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -50,6 +51,7 @@ public class MediaActivity extends AppCompatActivity {
     final List<MediaModel> listData = new ArrayList<>();
     MediaAdapter adapter;
     String req_url;
+    private SwipeRefreshLayout swipe_refresh_media;
 
     public  void watchYoutubeVideo(String youtube_id){
         Log.d("youtube",youtube_id);
@@ -74,6 +76,7 @@ public class MediaActivity extends AppCompatActivity {
             @Override
             public void onResponse(JSONArray response) {
                 Log.d("volley res", response.toString());
+                listData.clear();
 
                 try {
 
@@ -97,10 +100,11 @@ public class MediaActivity extends AppCompatActivity {
                     }
 
                     adapter.notifyDataSetChanged();
-
+                    swipe_refresh_media.setRefreshing(false);
 
                 } catch (JSONException e) {
                     e.printStackTrace();
+                    swipe_refresh_media.setRefreshing(false);
 
                 }
 
@@ -123,6 +127,7 @@ public class MediaActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setTitle("หมอแนะนำ");
+        swipe_refresh_media = (SwipeRefreshLayout)findViewById(R.id.swipe_refresh_media) ;
 
 
         req_url = Prefs.getString("api_url", "") + "frontend/web/media/list-media?cid=" + Prefs.getString("patient_cid", "");
@@ -190,6 +195,13 @@ public class MediaActivity extends AppCompatActivity {
 
             }
         }));
+
+        swipe_refresh_media.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                makeRequest(req_url);
+            }
+        });
 
 
     }
