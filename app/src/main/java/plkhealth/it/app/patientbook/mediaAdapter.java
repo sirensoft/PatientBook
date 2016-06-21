@@ -46,7 +46,7 @@ public class MediaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         MediaModel current=data.get(position);
         myHolder.title.setText(current.mTitle);
         myHolder.descript.setText(current.mDesc);
-        myHolder.read.setText(current.mRead);
+        myHolder.read.setText(current.mRead.equals("")?"      ":current.mRead);
         myHolder.send_date.setText(current.mDate);
         if(current.mType==1) {
             Glide.with(context).load(R.drawable.document).into(myHolder.list_image);
