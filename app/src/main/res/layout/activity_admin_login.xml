@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="ผู้ดูแลระบบ"
+        android:text="เฉพาะเจ้าหน้าที่"
         android:textColor="#e91811"
         android:textSize="35dp" />
 
