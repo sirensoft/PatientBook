@@ -69,7 +69,10 @@
         <activity android:name=".RiskActivity" />
         <activity android:name=".PatientInputListActivity" />
         <activity android:name=".ChartActivity" />
-        <activity android:name=".PatientInputAddActivity"></activity>
+        <activity
+            android:name=".PatientInputAddActivity"
+            android:windowSoftInputMode="adjustPan"
+           ></activity>
     </application>
 
 </manifest>
