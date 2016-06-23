@@ -71,8 +71,11 @@
         <activity android:name=".ChartActivity" />
         <activity
             android:name=".PatientInputAddActivity"
-            android:windowSoftInputMode="adjustPan"
-           ></activity>
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".LabActivity" />
+        <activity android:name=".ConsultActivity" />
+        <activity android:name=".ContactActivity" />
+        <activity android:name=".DrugActivity"></activity>
     </application>
 
 </manifest>

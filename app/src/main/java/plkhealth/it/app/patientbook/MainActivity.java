@@ -341,5 +341,9 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
 
     }
+    public void btn_consult_click(View view){
+        Intent intent = new Intent(this, ConsultActivity.class);
+        startActivity(intent);
+    }
 
 }
