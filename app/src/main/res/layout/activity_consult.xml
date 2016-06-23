@@ -39,15 +39,16 @@
                 <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/editText"
+                    android:id="@+id/txt_chat"
                     android:layout_weight="98" />
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="ส่ง"
-                    android:id="@+id/button"
-                    android:layout_weight="2" />
+                    android:id="@+id/btn_post_chat"
+                    android:layout_weight="2"
+                    android:onClick="btn_post_chat_click" />
 
             </LinearLayout>
         </LinearLayout>
