@@ -12,16 +12,7 @@ import android.widget.Toast;
 
 public class HospitalActivity extends AppCompatActivity {
 
-    void setFab(){
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_hospital);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-
-            }
-        });
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +21,7 @@ public class HospitalActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setTitle("โรงพยาบาล");
-        setFab();
+
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem menuItem) {
