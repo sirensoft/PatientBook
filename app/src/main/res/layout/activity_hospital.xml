@@ -114,7 +114,7 @@
         </TableLayout>
 
     </RelativeLayout>
-
+<!--
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab_hospital"
         android:layout_width="wrap_content"
@@ -123,5 +123,5 @@
         android:layout_margin="@dimen/fab_margin"
 
         android:src="@android:drawable/stat_notify_sync_noanim" />
-
+-->
 </android.support.design.widget.CoordinatorLayout>
