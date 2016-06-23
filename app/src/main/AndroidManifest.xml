@@ -73,7 +73,9 @@
             android:name=".PatientInputAddActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".LabActivity" />
-        <activity android:name=".ConsultActivity" />
+        <activity
+            android:name=".ConsultActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize"></activity>
         <activity android:name=".ContactActivity" />
         <activity android:name=".DrugActivity"></activity>
     </application>
