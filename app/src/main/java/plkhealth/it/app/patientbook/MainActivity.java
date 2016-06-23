@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
     ProgressDialog progress;
     MyGlobals myGlobals;
 
-    ImageButton btn_media;
+    ImageButton btn_media,btn_chat;
 
     public boolean check_setting(){
        boolean isSetting = false;
@@ -209,6 +209,42 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void get_chat(final View v){
+        if(!check_setting()){
+            return;
+        }
+        check_active();
+        if(!Prefs.getString("is_active","").equals("1")){
+            return;
+        }
+
+        String url = Prefs.getString("api_url","")+"frontend/web/chat/no-read?cid="+Prefs.getString("patient_cid","");
+        StringRequest stringRequest = new StringRequest(com.android.volley.Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.d("check media",response);
+                        if(!response.equals("0") && !response.equals("")) {
+                            BadgeView badge = new BadgeView(getApplicationContext(),v );
+                            badge.setText(response);
+                            Log.d("chat no read",response);
+                            badge.show();
+                            Prefs.putString("chat_count",response);
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+
+            }
+        });
+
+        Volley.newRequestQueue(this).add(stringRequest);
+
+    }
+
     public void check_chat(String url){
 
     }
@@ -226,7 +262,9 @@ public class MainActivity extends AppCompatActivity {
             snackbar.show();
         }
         btn_media = (ImageButton) findViewById(R.id.btn_media);
+        btn_chat = (ImageButton) findViewById(R.id.btn_chat);
         get_media(btn_media);
+        get_chat(btn_chat);
         ImageButton btn_appoint = (ImageButton)findViewById(R.id.btn_appointment);
         get_appoint(btn_appoint);
 
@@ -257,6 +295,7 @@ public class MainActivity extends AppCompatActivity {
                             public void run() {
                                 btn_media = (ImageButton) findViewById(R.id.btn_media);
                                 get_media(btn_media);
+                                get_chat(btn_chat);
                                 progress.dismiss();
                             }
                         });
