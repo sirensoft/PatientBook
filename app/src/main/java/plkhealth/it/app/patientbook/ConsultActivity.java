@@ -62,6 +62,8 @@ public class ConsultActivity extends AppCompatActivity {
 
                 } catch (IOException e) {
                     e.printStackTrace();
+                }finally {
+
                 }
 
             }
