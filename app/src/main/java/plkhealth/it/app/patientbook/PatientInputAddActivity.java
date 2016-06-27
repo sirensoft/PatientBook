@@ -111,7 +111,7 @@ public class PatientInputAddActivity extends AppCompatActivity {
         txt_note1 = (EditText)findViewById(R.id.txt_note1);
 
         String c_date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-        txt_note1.setText("วันที่ "+dateThai(c_date));
+        txt_note1.setText("วันที่ "+dateThai(c_date)+" ");
 
 
     }

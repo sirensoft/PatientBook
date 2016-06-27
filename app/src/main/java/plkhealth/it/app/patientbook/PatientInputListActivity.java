@@ -18,6 +18,7 @@ import com.pixplicity.easyprefs.library.Prefs;
 public class PatientInputListActivity extends AppCompatActivity {
 
     WebView webView ;
+    String url;
 
     View coord ;
     @Override
@@ -49,12 +50,18 @@ public class PatientInputListActivity extends AppCompatActivity {
         webView.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
         webView.setScrollbarFadingEnabled(true);
         //webView.loadData("กรุณารอสักครู่...", "text/html; charset=utf-8", "UTF-8");
-        final String url = Prefs.getString("api_url","")+"frontend/web/patient/input-list?cid="+Prefs.getString("patient_cid","");
+        url = Prefs.getString("api_url","")+"frontend/web/patient/input-list?cid="+Prefs.getString("patient_cid","");
         Log.d("url input",url);
 
         webView.loadUrl(url);
 
 
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        webView.loadUrl(url);
     }
 
 
