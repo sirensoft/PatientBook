@@ -122,12 +122,18 @@ public class PersonalInfoActivity extends AppCompatActivity {
                 webView.loadData("กรุณารอสักครู่...", "text/html; charset=utf-8", "UTF-8");
                 loadNewData(url_info);
                 Log.d("ptinfo",url_info);
-                Glide.with(getApplicationContext()).load(ApiUrl + "frontend/web/patient/image?cid="+Prefs.getString("patient_cid","")).into(img_personal_info);
+                Glide.with(getApplicationContext())
+                        .load(ApiUrl + "frontend/web/patient/image?cid="+Prefs.getString("patient_cid",""))
+                        .placeholder(R.drawable.who)
+                        .into(img_personal_info);
 
             }
         });
 
-        Glide.with(getApplicationContext()).load(ApiUrl + "frontend/web/patient/image?cid="+Prefs.getString("patient_cid","")).into(img_personal_info);
+        Glide.with(getApplicationContext())
+                .load(ApiUrl + "frontend/web/patient/image?cid="+Prefs.getString("patient_cid",""))
+                .placeholder(R.drawable.who)
+                .into(img_personal_info);
 
 
 
