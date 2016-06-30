@@ -2,11 +2,14 @@ package plkhealth.it.app.patientbook;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.os.Build;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -18,7 +21,7 @@ import com.pixplicity.easyprefs.library.Prefs;
 
 public class RiskActivity extends AppCompatActivity {
 
-    WebView webView;
+    WebView mwebView;
     View view_risk;
 
     private void loadNewData(String url) {
@@ -29,10 +32,9 @@ public class RiskActivity extends AppCompatActivity {
                     public void onResponse(String response) {
 
                         Prefs.putString("patient_risk", response);
-
                         //String patient_risk = Prefs.getString("patient_risk", "");
 
-                        webView.loadData(response, "text/html; charset=utf-8", "UTF-8");
+                        mwebView.loadData(response, "text/html; charset=utf-8", "UTF-8");
 
 
 
@@ -41,7 +43,7 @@ public class RiskActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 // Error handling
-                webView.loadData("ไม่สามารถเชื่อมต่อข้อมูลได้", "text/html; charset=utf-8", "UTF-8");
+                mwebView.loadData("ไม่สามารถเชื่อมต่อข้อมูลได้", "text/html; charset=utf-8", "UTF-8");
                 error.printStackTrace();
 
             }
@@ -60,26 +62,42 @@ public class RiskActivity extends AppCompatActivity {
         setTitle("สถานะสุขภาพ/ความเสี่ยง");
         view_risk = (View)findViewById(R.id.layout_risk) ;
 
-        webView = (WebView)findViewById(R.id.web_risk);
-        webView.setBackgroundColor(Color.TRANSPARENT);
-        webView.setLayerType(WebView.LAYER_TYPE_SOFTWARE, null);
-        webView.setWebViewClient(new MyWebViewClient());
-        webView.getSettings().setJavaScriptEnabled(true);
-
-        webView.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
-        webView.setScrollbarFadingEnabled(true);
-
         final String url_risk = Prefs.getString("api_url","")+"frontend/web/patient/risk?cid="+Prefs.getString("patient_cid","");
 
-        webView.loadData(Prefs.getString("patient_risk",""),"text/html; charset=utf-8", "UTF-8");
+
+        mwebView = (WebView)findViewById(R.id.web_risk);
+        mwebView.setBackgroundColor(Color.TRANSPARENT);
+        WebSettings webSettings = mwebView.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+        //improve webView performance
+        if (Build.VERSION.SDK_INT >= 19) {
+            mwebView.setLayerType(View.LAYER_TYPE_HARDWARE, null);
+        }
+        else {
+            mwebView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+        }
+        mwebView.getSettings().setRenderPriority(WebSettings.RenderPriority.HIGH);
+        //mwebView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+        mwebView.getSettings().setAppCacheEnabled(true);
+        mwebView.setScrollBarStyle(View.SCROLLBARS_OUTSIDE_OVERLAY);
+        mwebView.setScrollbarFadingEnabled(true);
+        webSettings.setDomStorageEnabled(true);
+        webSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);
+        //webSettings.setUseWideViewPort(true);
+        //webSettings.setSavePassword(true);
+        //webSettings.setSaveFormData(true);
+        webSettings.setEnableSmoothTransition(true);
+
+        mwebView.loadData(Prefs.getString("patient_risk",""),"text/html; charset=utf-8", "UTF-8");
+
+        mwebView.setWebViewClient(new MyWebViewClient());
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_risk);
-
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                webView.loadData("กรุณารอสักครู่...", "text/html; charset=utf-8", "UTF-8");
+                mwebView.loadData("กรุณารอสักครู่...", "text/html; charset=utf-8", "UTF-8");
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
@@ -119,11 +137,19 @@ public class RiskActivity extends AppCompatActivity {
         }
         @Override
         public void onPageFinished(WebView view, final String url) {
-
-
+            super.onPageFinished(view, url);
         }
         @Override
         public void onPageStarted(WebView view, String url, Bitmap favicon) {
+            super.onPageStarted(view,url,favicon);
+            //view.loadData("กรุณารอสักครู่...", "text/html; charset=utf-8", "UTF-8");
+
+        }
+        @Override
+        public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+            Log.i("WEB_VIEW_TEST", "error code:" + errorCode);
+            view.loadData("ไม่สามารถเชื่อมโยงข้อมูลได้", "text/html; charset=utf-8", "UTF-8");
+            super.onReceivedError(view, errorCode, description, failingUrl);
 
 
         }

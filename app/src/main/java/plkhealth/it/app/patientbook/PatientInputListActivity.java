@@ -1,8 +1,10 @@
 package plkhealth.it.app.patientbook;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.os.Build;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +12,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -17,7 +20,7 @@ import com.pixplicity.easyprefs.library.Prefs;
 
 public class PatientInputListActivity extends AppCompatActivity {
 
-    WebView webView ;
+    WebView mwebView ;
     String url;
 
     View coord ;
@@ -41,27 +44,42 @@ public class PatientInputListActivity extends AppCompatActivity {
             }
         });
 
-        webView = (WebView)findViewById(R.id.web_input_list);
-        webView.setBackgroundColor(Color.TRANSPARENT);
-        webView.setLayerType(WebView.LAYER_TYPE_SOFTWARE, null);
-        webView.setWebViewClient(new MyWebViewClient());
-        webView.getSettings().setJavaScriptEnabled(true);
-
-        webView.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
-        webView.setScrollbarFadingEnabled(true);
-        //webView.loadData("กรุณารอสักครู่...", "text/html; charset=utf-8", "UTF-8");
         url = Prefs.getString("api_url","")+"frontend/web/patient/input-list?cid="+Prefs.getString("patient_cid","");
+        //WebView
+        mwebView = (WebView)findViewById(R.id.web_input_list);
+        mwebView.setBackgroundColor(Color.TRANSPARENT);
+        WebSettings webSettings = mwebView.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+        //improve webView performance
+        if (Build.VERSION.SDK_INT >= 19) {
+            mwebView.setLayerType(View.LAYER_TYPE_HARDWARE, null);
+        }
+        else {
+            mwebView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+        }
+        mwebView.getSettings().setRenderPriority(WebSettings.RenderPriority.HIGH);
+        //mwebView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+        mwebView.getSettings().setAppCacheEnabled(true);
+        mwebView.setScrollBarStyle(View.SCROLLBARS_OUTSIDE_OVERLAY);
+        mwebView.setScrollbarFadingEnabled(true);
+        webSettings.setDomStorageEnabled(true);
+        webSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);
+        //webSettings.setUseWideViewPort(true);
+        //webSettings.setSavePassword(true);
+        //webSettings.setSaveFormData(true);
+        webSettings.setEnableSmoothTransition(true);
+
+        mwebView.loadUrl(url);
         Log.d("url input",url);
 
-        webView.loadUrl(url);
-
+        mwebView.setWebViewClient(new MyWebViewClient());
 
     }
 
     @Override
     protected void onResume(){
         super.onResume();
-        webView.loadUrl(url);
+        mwebView.loadUrl(url);
     }
 
 
@@ -104,11 +122,16 @@ public class PatientInputListActivity extends AppCompatActivity {
         @Override
         public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
             Log.i("WEB_VIEW_TEST", "error code:" + errorCode);
+            view.loadData("ไม่สามารถเชื่อมโยงข้อมูลได้", "text/html; charset=utf-8", "UTF-8");
             super.onReceivedError(view, errorCode, description, failingUrl);
-           view.loadData("ไม่สามารถเชื่อมโยงข้อมูลได้", "text/html; charset=utf-8", "UTF-8");
+
 
         }
 
 
     }
+
+
+
+
 }

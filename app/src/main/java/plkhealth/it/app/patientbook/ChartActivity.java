@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -16,7 +17,7 @@ import com.pixplicity.easyprefs.library.Prefs;
 
 public class ChartActivity extends AppCompatActivity {
 
-    WebView webView;
+    WebView mwebView;
     String url;
 
     @Override
@@ -27,25 +28,35 @@ public class ChartActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setTitle("กราฟ");
 
-        webView = (WebView)findViewById(R.id.webViewChart);
-        //webView.setBackgroundColor(Color.TRANSPARENT);
+        url = Prefs.getString("api_url","")+"frontend/web/patient/chart?cid="+Prefs.getString("patient_cid","");
+
+        mwebView = (WebView)findViewById(R.id.webViewChart);
+        mwebView.setBackgroundColor(Color.TRANSPARENT);
+        WebSettings webSettings = mwebView.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+        //improve webView performance
         if (Build.VERSION.SDK_INT >= 19) {
-            webView.setLayerType(View.LAYER_TYPE_HARDWARE, null);
+            mwebView.setLayerType(View.LAYER_TYPE_HARDWARE, null);
         }
         else {
-            webView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+            mwebView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
         }
-        //webView.setLayerType(WebView.LAYER_TYPE_SOFTWARE, null);
-        webView.setWebViewClient(new MyWebViewClient());
-        webView.getSettings().setJavaScriptEnabled(true);
+        mwebView.getSettings().setRenderPriority(WebSettings.RenderPriority.HIGH);
+        //mwebView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+        mwebView.getSettings().setAppCacheEnabled(true);
+        mwebView.setScrollBarStyle(View.SCROLLBARS_OUTSIDE_OVERLAY);
+        mwebView.setScrollbarFadingEnabled(true);
+        webSettings.setDomStorageEnabled(true);
+        webSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);
+        //webSettings.setUseWideViewPort(true);
+        //webSettings.setSavePassword(true);
+        //webSettings.setSaveFormData(true);
+        webSettings.setEnableSmoothTransition(true);
 
-        webView.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
-        webView.setScrollbarFadingEnabled(true);
-        //webView.loadData("กรุณารอสักครู่...", "text/html; charset=utf-8", "UTF-8");
-        url = Prefs.getString("api_url","")+"frontend/web/patient/chart?cid="+Prefs.getString("patient_cid","");
+        mwebView.loadUrl(url);
         Log.d("url chart",url);
 
-        webView.loadUrl(url);
+        mwebView.setWebViewClient(new MyWebViewClient());
 
     }
 
@@ -77,8 +88,9 @@ public class ChartActivity extends AppCompatActivity {
         @Override
         public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
             Log.i("WEB_VIEW_TEST", "error code:" + errorCode);
-            super.onReceivedError(view, errorCode, description, failingUrl);
             view.loadData("ไม่สามารถเชื่อมโยงข้อมูลได้", "text/html; charset=utf-8", "UTF-8");
+            super.onReceivedError(view, errorCode, description, failingUrl);
+
 
         }
 
