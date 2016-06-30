@@ -30,26 +30,20 @@ public class RiskActivity extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-
                         Prefs.putString("patient_risk", response);
                         //String patient_risk = Prefs.getString("patient_risk", "");
-
                         mwebView.loadData(response, "text/html; charset=utf-8", "UTF-8");
-
-
 
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 // Error handling
-                mwebView.loadData("ไม่สามารถเชื่อมต่อข้อมูลได้", "text/html; charset=utf-8", "UTF-8");
+                mwebView.loadData("ไม่สามารถเชื่อมต่อข้อมูลได้..", "text/html; charset=utf-8", "UTF-8");
                 error.printStackTrace();
 
             }
         });
-
-// Add the request to the queue
         Volley.newRequestQueue(this).add(stringRequest);
     }
 
@@ -69,28 +63,15 @@ public class RiskActivity extends AppCompatActivity {
         mwebView.setBackgroundColor(Color.TRANSPARENT);
         WebSettings webSettings = mwebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
-        //improve webView performance
-        if (Build.VERSION.SDK_INT >= 19) {
-            mwebView.setLayerType(View.LAYER_TYPE_HARDWARE, null);
-        }
-        else {
-            mwebView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
-        }
-        mwebView.getSettings().setRenderPriority(WebSettings.RenderPriority.HIGH);
-        //mwebView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
-        mwebView.getSettings().setAppCacheEnabled(true);
+
+
         mwebView.setScrollBarStyle(View.SCROLLBARS_OUTSIDE_OVERLAY);
         mwebView.setScrollbarFadingEnabled(true);
-        webSettings.setDomStorageEnabled(true);
-        webSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);
-        //webSettings.setUseWideViewPort(true);
-        //webSettings.setSavePassword(true);
-        //webSettings.setSaveFormData(true);
-        webSettings.setEnableSmoothTransition(true);
+
 
         mwebView.loadData(Prefs.getString("patient_risk",""),"text/html; charset=utf-8", "UTF-8");
 
-        mwebView.setWebViewClient(new MyWebViewClient());
+        //mwebView.setWebViewClient(new MyWebViewClient());
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_risk);
