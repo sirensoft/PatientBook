@@ -35,12 +35,13 @@ public class ChartActivity extends AppCompatActivity {
         WebSettings webSettings = mwebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         //improve webView performance
-        if (Build.VERSION.SDK_INT >= 19) {
+        mwebView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+       /* if (Build.VERSION.SDK_INT >= 19) {
             mwebView.setLayerType(View.LAYER_TYPE_HARDWARE, null);
         }
         else {
             mwebView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
-        }
+        }*/
         mwebView.getSettings().setRenderPriority(WebSettings.RenderPriority.HIGH);
         //mwebView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
         mwebView.getSettings().setAppCacheEnabled(true);
