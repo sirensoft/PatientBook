@@ -42,7 +42,7 @@ public class DoctorLoginActivity extends AppCompatActivity {
         String var_doctor_user = txt_doctor_user.getText().toString();
         String var_doctor_pass = txt_doctor_pass.getText().toString();
         if(var_doctor_user.equals("doctor") && var_doctor_pass.equals("112233")){
-            Intent intent = new Intent(this,HomeVisitActivity.class);
+            Intent intent = new Intent(this,HomeVisitListActivity.class);
             startActivity(intent);
             finish();
         }
