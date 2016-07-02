@@ -77,7 +77,10 @@
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity android:name=".ContactActivity" />
         <activity android:name=".DrugActivity" />
-        <activity android:name=".HomeVisitActivity"></activity>
+        <activity android:name=".HomeVisitActivity"
+            android:windowSoftInputMode="adjustPan">
+
+        </activity>
     </application>
 
 </manifest>

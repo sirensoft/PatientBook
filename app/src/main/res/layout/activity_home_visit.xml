@@ -9,4 +9,96 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".HomeVisitActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <EditText
+            android:id="@+id/txt_bw"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="นำหนัก (กก)"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/txt_bh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="ส่วนสูง(ซม)"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/txt_waist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="รอบเอว(ซม)"
+            android:inputType="number" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ความดันโลหิต"
+            android:textSize="16dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/txt_bps"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="120"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/txt_bpd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="80"
+                android:inputType="number" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/txt_pulse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="ชีพจร"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/txt_sugar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="ค่าน้ำตาล"
+            android:inputType="number" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="บันทึกรายละเอียด"
+            />
+
+        <EditText
+            android:id="@+id/txt_note1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top|left"
+            android:inputType="textMultiLine"
+            android:lines="8"
+            android:maxLines="10"
+            android:minLines="6"
+            android:scrollbars="vertical" />
+
+    </LinearLayout>
+
 </RelativeLayout>
