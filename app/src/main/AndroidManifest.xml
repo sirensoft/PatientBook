@@ -48,7 +48,6 @@
         </receiver>
 
         <activity android:name=".DoctorLoginActivity" />
-        <activity android:name=".DoctorVisitActivity" />
         <activity android:name=".HospitalActivity" />
 
         <!-- [START firebase_service] -->
@@ -75,9 +74,10 @@
         <activity android:name=".LabActivity" />
         <activity
             android:name=".ConsultActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize"></activity>
+            android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity android:name=".ContactActivity" />
-        <activity android:name=".DrugActivity"></activity>
+        <activity android:name=".DrugActivity" />
+        <activity android:name=".HomeVisitActivity"></activity>
     </application>
 
 </manifest>
