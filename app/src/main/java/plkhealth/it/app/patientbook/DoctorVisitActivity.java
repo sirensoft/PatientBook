@@ -13,13 +13,7 @@ import com.bumptech.glide.Glide;
 
 public class DoctorVisitActivity extends AppCompatActivity {
 
-    ImageView img_test ;
 
-
-    private void bind_widget(){
-
-        img_test = (ImageView)findViewById(R.id.img_test);
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,11 +24,9 @@ public class DoctorVisitActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setTitle("ลงบันทึกการเยี่ยม");
 
-        bind_widget();
 
-        Glide.with(this)
-                .load("https://cdn2.iconfinder.com/data/icons/medical-services-2/256/Hospitalization-512.png")
-                .into(img_test);
+
+
 
     }
     @Override
