@@ -40,7 +40,7 @@ public class WebviewActivity extends AppCompatActivity {
         Log.d("fcm data",b.getString("desc"));
         String msg = b.getString("desc");
 
-        webview.loadData("<h3>"+msg+"</h3>", "text/html; charset=utf-8", "UTF-8");
+        webview.loadData("<h2>&nbsp;&nbsp;"+msg+"</h2>", "text/html; charset=utf-8", "UTF-8");
 
 
 
