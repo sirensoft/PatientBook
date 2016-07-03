@@ -25,9 +25,6 @@ import com.pixplicity.easyprefs.library.Prefs;
 public class WebviewActivity extends AppCompatActivity {
 
     WebView webview;
-    ProgressBar progressBar;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,54 +32,24 @@ public class WebviewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_webview);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        Intent intent = getIntent();
-        String title = intent.getStringExtra("title");
-        String url = intent.getStringExtra("url");
-        setTitle(title);
+        setTitle("หมอแจ้งข่าว");
 
-        Log.d("web url",url);
+        webview =(WebView)findViewById(R.id.mywebview);
+
+        Bundle b = getIntent().getExtras();
+        Log.d("fcm data",b.getString("desc"));
+        String msg = b.getString("desc");
+
+        webview.loadData("<h3>"+msg+"</h3>", "text/html; charset=utf-8", "UTF-8");
 
 
-        this.webview = (WebView)findViewById(R.id.mywebview);
-        webview.setWebViewClient(new MyBrowser(){
-            public void onReceivedError(WebView webView, int errorCode, String description, String failingUrl) {
-                /*try {
-                    webView.stopLoading();
-                } catch (Exception e) {
-                }
-                try {
-                    webView.clearView();
-                } catch (Exception e) {
-                }
-                if (webView.canGoBack()) {
-                    webView.goBack();
-                }*/
-                //webView.loadUrl("about:blank");
-                webView.loadData("<h3>อุปกรณ์ไม่เชื่อมต่ออินเตอร์เน็ต</h3>","text/html; charset=utf-8", "UTF-8");
-                super.onReceivedError(webView, errorCode, description, failingUrl);
-            }
-        });
-
-        WebSettings settings = webview.getSettings();
-        settings.setJavaScriptEnabled(true);
-        settings.setLoadsImagesAutomatically(true);
-        webview.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
-
-        webview.loadUrl(url);
 
     }
-
-    private class MyBrowser extends WebViewClient {
-        @Override
-        public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            view.loadUrl(url);
-            return true;
-        }
-    }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem menuItem) {
         if (menuItem.getItemId() == android.R.id.home) {
+            Intent i = new Intent(this,MainActivity.class);
+            startActivity(i);
             finish();
         }
 
