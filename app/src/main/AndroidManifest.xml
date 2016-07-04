@@ -7,7 +7,6 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
 
-
     <application
         android:name=".PatientBookApplication"
         android:allowBackup="true"
@@ -64,14 +63,9 @@
         </service>
 
         <activity android:name=".WebviewActivity">
-            <intent-filter>
-                <action android:name="OPEN_ACTIVITY_1" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".MediaActivity" >
 
         </activity>
+        <activity android:name=".MediaActivity"></activity>
         <activity android:name=".AppointActivity" />
         <activity android:name=".RiskActivity" />
         <activity android:name=".PatientInputListActivity" />
@@ -86,9 +80,15 @@
         <activity android:name=".ContactActivity" />
         <activity android:name=".DrugActivity" />
         <activity android:name=".HomeVisitListActivity" />
-        <activity android:name=".HomeVisitActivity"
-            android:windowSoftInputMode="adjustPan">
+        <activity
+            android:name=".HomeVisitActivity"
+            android:windowSoftInputMode="adjustPan"></activity>
+        <activity android:name=".ShowNotifyActivity">
+            <intent-filter>
+                <action android:name="OPEN_ACTIVITY_1" />
 
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
     </application>
 

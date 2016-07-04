@@ -67,7 +67,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     }
 
     private void sendNotification2(String messageTitle,String messageBody) {
-        Intent intent = new Intent(this, WebviewActivity.class);
+        Intent intent = new Intent(this, ShowNotifyActivity.class);
         intent.putExtra("desc",messageBody);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this,0 /* request code */, intent,PendingIntent.FLAG_UPDATE_CURRENT);

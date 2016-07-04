@@ -4,10 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    tools:context=".WebviewActivity">
+    tools:context=".ShowNotifyActivity">
+
     <WebView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/mywebview"></WebView>
+        android:id="@+id/notify_webview"></WebView>
 
 </RelativeLayout>
