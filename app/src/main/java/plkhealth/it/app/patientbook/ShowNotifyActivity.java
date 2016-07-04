@@ -1,5 +1,6 @@
 package plkhealth.it.app.patientbook;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -41,6 +42,8 @@ public class ShowNotifyActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem menuItem) {
         if (menuItem.getItemId() == android.R.id.home) {
 
+            Intent i = new Intent(this,MainActivity.class);
+            startActivity(i);
             finish();
         }
 
