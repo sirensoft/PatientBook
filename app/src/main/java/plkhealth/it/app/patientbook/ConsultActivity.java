@@ -2,6 +2,8 @@ package plkhealth.it.app.patientbook;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.os.Handler;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,11 +33,12 @@ import okhttp3.RequestBody;
 
 public class ConsultActivity extends AppCompatActivity {
 
-    EditText txt_chat ;
+    EditText txt_chat;
     WebView mwebView;
     String list_chat_url;
+    SwipeRefreshLayout swipe_refresh_chat;
 
-    public void add_data(final String chat){
+    public void add_data(final String chat) {
 
         final String url_input = Prefs.getString("api_url", "") + "frontend/web/chat/post";
         new Thread(new Runnable() {
@@ -45,9 +48,9 @@ public class ConsultActivity extends AppCompatActivity {
                 RequestBody body = new FormBody.Builder()
 
                         .add("patient_cid", Prefs.getString("patient_cid", ""))
-                        .add("chat_text",chat)
-                        .add("doctor_or_patient","patient")
-                        .add("hospcode","")
+                        .add("chat_text", chat)
+                        .add("doctor_or_patient", "patient")
+                        .add("hospcode", "")
                         .build();
 
                 Request request = new Request.Builder()
@@ -57,16 +60,15 @@ public class ConsultActivity extends AppCompatActivity {
 
                 try {
                     client.newCall(request).execute();
-                    Log.d("chat post","ok");
-
+                    Log.d("chat post", "ok");
 
 
                 } catch (IOException e) {
                     e.printStackTrace();
-                }finally {
-                    runOnUiThread(new Runnable(){
+                } finally {
+                    runOnUiThread(new Runnable() {
                         @Override
-                        public void run(){
+                        public void run() {
                             // change UI elements here
                             txt_chat.setText("");
                             mwebView.reload();
@@ -80,7 +82,6 @@ public class ConsultActivity extends AppCompatActivity {
     }
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,7 +90,22 @@ public class ConsultActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setTitle("ปรึกษาหมอ");
 
-        mwebView = (WebView)findViewById(R.id.chat_webview);
+        swipe_refresh_chat = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_chat);
+
+        swipe_refresh_chat.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                mwebView.reload();
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        swipe_refresh_chat.setRefreshing(false);
+                    }
+                }, 3000);
+            }
+        });
+
+        mwebView = (WebView) findViewById(R.id.chat_webview);
         mwebView.setBackgroundColor(Color.TRANSPARENT);
         WebSettings webSettings = mwebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
@@ -97,16 +113,17 @@ public class ConsultActivity extends AppCompatActivity {
         mwebView.setScrollbarFadingEnabled(true);
 
 
-        txt_chat = (EditText)findViewById(R.id.txt_chat);
-        list_chat_url = Prefs.getString("api_url","")+"frontend/web/chat/list?cid="+Prefs.getString("patient_cid","");
+        txt_chat = (EditText) findViewById(R.id.txt_chat);
+        list_chat_url = Prefs.getString("api_url", "") + "frontend/web/chat/list?cid=" + Prefs.getString("patient_cid", "");
         mwebView.loadUrl(list_chat_url);
-
+        mwebView.setWebViewClient(new MyWebViewClient());
 
 
     }
-    public void btn_post_chat_click(View view){
-        String mChat=txt_chat.getText().toString();
-        if(!mChat.trim().equals("")){
+
+    public void btn_post_chat_click(View view) {
+        String mChat = txt_chat.getText().toString();
+        if (!mChat.trim().equals("")) {
             add_data(mChat);
         }
 
@@ -128,16 +145,19 @@ public class ConsultActivity extends AppCompatActivity {
             view.loadUrl(url);
             return true;
         }
+
         @Override
         public void onPageFinished(WebView view, final String url) {
             super.onPageFinished(view, url);
         }
+
         @Override
         public void onPageStarted(WebView view, String url, Bitmap favicon) {
-            super.onPageStarted(view,url,favicon);
+            super.onPageStarted(view, url, favicon);
             //view.loadData("กรุณารอสักครู่...", "text/html; charset=utf-8", "UTF-8");
 
         }
+
         @Override
         public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
             Log.i("WEB_VIEW_TEST", "error code:" + errorCode);
