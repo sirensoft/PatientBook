@@ -114,6 +114,7 @@ public class ConsultActivity extends AppCompatActivity {
         if (!mChat.trim().equals("")) {
             add_data(mChat);
         }
+        txt_chat.setText("");
 
 
     }
