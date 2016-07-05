@@ -7,6 +7,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebSettings;
@@ -36,7 +37,7 @@ public class ConsultActivity extends AppCompatActivity {
     EditText txt_chat;
     WebView mwebView;
     String list_chat_url;
-    SwipeRefreshLayout swipe_refresh_chat;
+
 
     public void add_data(final String chat) {
 
@@ -90,20 +91,7 @@ public class ConsultActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setTitle("ปรึกษาหมอ");
 
-        swipe_refresh_chat = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_chat);
 
-        swipe_refresh_chat.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                mwebView.reload();
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        swipe_refresh_chat.setRefreshing(false);
-                    }
-                }, 3000);
-            }
-        });
 
         mwebView = (WebView) findViewById(R.id.chat_webview);
         mwebView.setBackgroundColor(Color.TRANSPARENT);
@@ -131,9 +119,19 @@ public class ConsultActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_chat, menu);
+        return true;
+    }
+    @Override
     public boolean onOptionsItemSelected(MenuItem menuItem) {
         if (menuItem.getItemId() == android.R.id.home) {
             finish();
+        }
+        if (menuItem.getItemId() == R.id.action_chat_refresh) {
+            this.mwebView.loadUrl(list_chat_url);
+
         }
         return super.onOptionsItemSelected(menuItem);
     }
