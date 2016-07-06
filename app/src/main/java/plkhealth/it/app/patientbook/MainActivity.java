@@ -65,6 +65,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void check_active() {
+        if(Prefs.getString("api_url","").equals("")){
+            return;
+        }
         String url = Prefs.getString("api_url", "") + "frontend/web/patient/check-active?cid=" + Prefs.getString("patient_cid", "");
         StringRequest stringRequest = new StringRequest(com.android.volley.Request.Method.GET, url,
                 new Response.Listener<String>() {
@@ -131,6 +134,9 @@ public class MainActivity extends AppCompatActivity {
     public void get_appoint(final  View v){
         // Request data
         String cid = Prefs.getString("patient_cid","");
+        if(Prefs.getString("api_url","").equals("")){
+            return;
+        }
         String url = Prefs.getString("api_url", "") + "frontend/web/patient/appoint?cid="+cid;
         Log.d("Url",url);
 
