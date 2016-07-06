@@ -15,7 +15,9 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Response;
+import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
@@ -47,6 +49,10 @@ public class DrugActivity extends AppCompatActivity {
 
             }
         });
+        RetryPolicy policy = new DefaultRetryPolicy(30000//milli-sec
+                , DefaultRetryPolicy.DEFAULT_MAX_RETRIES
+                , DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+        stringRequest.setRetryPolicy(policy);
         Volley.newRequestQueue(this).add(stringRequest);
     }
 
