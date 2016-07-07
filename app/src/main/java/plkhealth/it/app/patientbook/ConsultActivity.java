@@ -72,7 +72,8 @@ public class ConsultActivity extends AppCompatActivity {
                         public void run() {
                             // change UI elements here
                             txt_chat.setText("");
-                            mwebView.reload();
+                            //mwebView.reload();
+                            mwebView.loadUrl(list_chat_url);
                         }
                     });
                 }
