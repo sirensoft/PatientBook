@@ -29,7 +29,9 @@ public class PatientInputAddActivity extends AppCompatActivity {
 
     public void add_data(){
 
-        final String url_input = Prefs.getString("api_url", "") + "frontend/web/patient/input";
+        String url = Prefs.getString("api_url", "");
+        final String url_input = url.equals("")?"http://host/":url + "frontend/web/patient/input";
+
         new Thread(new Runnable() {
             @Override
             public void run() {

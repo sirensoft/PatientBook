@@ -41,13 +41,14 @@ public class ConsultActivity extends AppCompatActivity {
 
     public void add_data(final String chat) {
 
-        final String url_input = Prefs.getString("api_url", "") + "frontend/web/chat/post";
+        String url = Prefs.getString("api_url", "");
+        final String url_input = url.equals("")?"http://host/":url + "frontend/web/chat/post";
         new Thread(new Runnable() {
             @Override
             public void run() {
                 OkHttpClient client = new OkHttpClient();
-                RequestBody body = new FormBody.Builder()
 
+                RequestBody body = new FormBody.Builder()
                         .add("patient_cid", Prefs.getString("patient_cid", ""))
                         .add("chat_text", chat)
                         .add("doctor_or_patient", "patient")
@@ -60,6 +61,7 @@ public class ConsultActivity extends AppCompatActivity {
                         .build();
 
                 try {
+
                     client.newCall(request).execute();
                     Log.d("chat post", "ok");
 
@@ -91,7 +93,6 @@ public class ConsultActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setTitle("ปรึกษาหมอ");
-
 
 
         mwebView = (WebView) findViewById(R.id.chat_webview);
@@ -126,6 +127,7 @@ public class ConsultActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_chat, menu);
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem menuItem) {
         if (menuItem.getItemId() == android.R.id.home) {

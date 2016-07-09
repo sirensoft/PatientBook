@@ -27,8 +27,8 @@ public class HomeVisitActivity extends AppCompatActivity {
     EditText txt_bw,txt_bh,txt_waist,txt_bps,txt_bpd,txt_pulse,txt_sugar,txt_note1;
 
     public void add_data(){
-
-        final String url_input = Prefs.getString("api_url", "") + "frontend/web/patient/home-visit-input";
+        String url = Prefs.getString("api_url", "");
+        final String url_input_visit = url.equals("")?"http://host/":url + "frontend/web/patient/home-visit-input";
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -49,7 +49,7 @@ public class HomeVisitActivity extends AppCompatActivity {
                         .build();
 
                 Request request = new Request.Builder()
-                        .url(url_input)
+                        .url(url_input_visit)
                         .post(body)
                         .build();
 
