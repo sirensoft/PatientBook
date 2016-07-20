@@ -247,7 +247,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="หมอมาเยี่ยม"
+                    android:text="บันทึกเยี่ยม"
 
                     android:textSize="16dp" />
             </LinearLayout>
