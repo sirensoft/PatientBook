@@ -37,7 +37,7 @@
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:textAppearance="?android:attr/textAppearanceLarge"
-             android:textColor="#FF0000"
+             android:textColor="#0000FF"
              android:textStyle="bold"
              android:text="  "
              android:id="@+id/tv_app_date" />
@@ -55,6 +55,7 @@
              android:id="@+id/textView4" />
 
          <TextView
+             android:textColor="#0000FF"
              android:paddingLeft="10dp"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
@@ -79,6 +80,7 @@
               />
 
          <TextView
+             android:textColor="#0000FF"
              android:paddingLeft="5dp"
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
@@ -104,6 +106,7 @@
 
 
          <TextView
+             android:textColor="#0000FF"
              android:paddingLeft="5dp"
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
@@ -137,10 +140,20 @@
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
 
-             android:text="รายละเอียด:"
+             android:text="รายละเอียด/เตรียมตัว:"
              />
 
          <TextView
+             android:textAlignment="center"
+             android:text=""
+             android:textColor="#0000FF"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:textAppearance="?android:attr/textAppearanceLarge"
+             android:id="@+id/tv_app_count_down" />
+
+         <TextView
+             android:textColor="#0000FF"
              android:paddingLeft="5dp"
              android:layout_width="match_parent"
              android:layout_height="wrap_content"

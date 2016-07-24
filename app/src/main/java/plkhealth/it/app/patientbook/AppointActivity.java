@@ -34,7 +34,7 @@ import java.util.Locale;
 public class AppointActivity extends AppCompatActivity {
 
     View view_appoint;
-    TextView tv_app_date,tv_app_time,tv_app_hos,tv_app_clinic,tv_app_note;
+    TextView tv_app_date,tv_app_time,tv_app_hos,tv_app_clinic,tv_app_note,tv_app_count_down;
 
     void bindWidget(){
         tv_app_date = (TextView)findViewById(R.id.tv_app_date);
@@ -42,6 +42,7 @@ public class AppointActivity extends AppCompatActivity {
         tv_app_hos = (TextView)findViewById(R.id.tv_app_hos);
         tv_app_clinic = (TextView)findViewById(R.id.tv_app_clinic);
         tv_app_note = (TextView)findViewById(R.id.tv_app_note);
+        tv_app_count_down = (TextView)findViewById(R.id.tv_app_count_down);
     }
 
     public static String dateThai(String strDate)
@@ -96,6 +97,10 @@ public class AppointActivity extends AppCompatActivity {
                     tv_app_clinic.setText(js_obj.getString("mclinic"));
                     tv_app_hos.setText(js_obj.getString("hospcode"));
                     tv_app_note.setText(js_obj.getString("mnote"));
+                    String mcount = js_obj.getString("mcount");
+                    if(!mcount.equals("0")) {
+                        tv_app_count_down.setText("อีก " + mcount + " วันจะถึงวันนัด");
+                    }
 
 
                     if (js_obj.getString("cid").equals("null")) {
