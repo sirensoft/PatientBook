@@ -65,7 +65,7 @@ public class DrugActivity extends AppCompatActivity {
         setTitle("ยา");
         view_drug = (View)findViewById(R.id.layout_drug) ;
 
-        final String url_drug = Prefs.getString("api_url","")+"frontend/web/patient/drug?cid="+Prefs.getString("patient_cid","");
+        final String url_drug = Prefs.getString("api_url","")+"frontend/web/index.php/patient/drug?cid="+Prefs.getString("patient_cid","");
 
 
         mwebView = (WebView)findViewById(R.id.web_drug);

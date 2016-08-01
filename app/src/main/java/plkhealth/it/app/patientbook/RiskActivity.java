@@ -63,7 +63,7 @@ public class RiskActivity extends AppCompatActivity {
         setTitle("สถานะสุขภาพ/ความเสี่ยง");
         view_risk = (View)findViewById(R.id.layout_risk) ;
 
-        final String url_risk = Prefs.getString("api_url","")+"frontend/web/patient/risk?cid="+Prefs.getString("patient_cid","");
+        final String url_risk = Prefs.getString("api_url","")+"frontend/web/index.php/patient/risk?cid="+Prefs.getString("patient_cid","");
 
 
         mwebView = (WebView)findViewById(R.id.web_risk);

@@ -44,7 +44,7 @@ public class PatientInputListActivity extends AppCompatActivity {
             }
         });
 
-        url = Prefs.getString("api_url","")+"frontend/web/patient/input-list?cid="+Prefs.getString("patient_cid","");
+        url = Prefs.getString("api_url","")+"frontend/web/index.php/patient/input-list?cid="+Prefs.getString("patient_cid","");
         //WebView
         mwebView = (WebView)findViewById(R.id.web_input_list);
         mwebView.setBackgroundColor(Color.TRANSPARENT);

@@ -28,7 +28,7 @@ public class ChartActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setTitle("กราฟ");
 
-        url = Prefs.getString("api_url","")+"frontend/web/patient/chart?cid="+Prefs.getString("patient_cid","");
+        url = Prefs.getString("api_url","")+"frontend/web/index.php/patient/chart?cid="+Prefs.getString("patient_cid","");
 
         mwebView = (WebView)findViewById(R.id.webViewChart);
         mwebView.setBackgroundColor(Color.TRANSPARENT);

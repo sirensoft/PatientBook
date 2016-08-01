@@ -234,7 +234,7 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        String url = Prefs.getString("api_url","")+"frontend/web/chat/no-read?cid="+Prefs.getString("patient_cid","");
+        String url = Prefs.getString("api_url","")+"frontend/web/index.php/chat/no-read?cid="+Prefs.getString("patient_cid","");
         StringRequest stringRequest = new StringRequest(com.android.volley.Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override

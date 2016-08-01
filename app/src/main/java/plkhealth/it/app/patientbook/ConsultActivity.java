@@ -42,7 +42,7 @@ public class ConsultActivity extends AppCompatActivity {
     public void add_data(final String chat) {
 
         String url = Prefs.getString("api_url", "");
-        final String url_input = url.equals("")?"http://host/":url + "frontend/web/chat/post";
+        final String url_input = url.equals("")?"http://host/":url + "frontend/web/index.php/chat/post";
         new Thread(new Runnable() {
             @Override
             public void run() {

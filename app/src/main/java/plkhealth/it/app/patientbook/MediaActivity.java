@@ -136,7 +136,7 @@ public class MediaActivity extends AppCompatActivity {
         swipe_refresh_media = (SwipeRefreshLayout)findViewById(R.id.swipe_refresh_media) ;
 
 
-        req_url = Prefs.getString("api_url", "") + "frontend/web/media/list-media?cid=" + Prefs.getString("patient_cid", "");
+        req_url = Prefs.getString("api_url", "") + "frontend/web/index.php/media/list-media?cid=" + Prefs.getString("patient_cid", "");
         makeRequest(req_url);
 
         listViewMedia = (RecyclerView) findViewById(R.id.listViewMedia);

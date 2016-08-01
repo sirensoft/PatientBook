@@ -75,7 +75,7 @@ public class AppointActivity extends AppCompatActivity {
     void get_appoint(){
         // Request data
         String cid = Prefs.getString("patient_cid","");
-        String url = Prefs.getString("api_url", "") + "frontend/web/patient/appoint?cid="+cid;
+        String url = Prefs.getString("api_url", "") + "frontend/web/index.php/patient/appoint?cid="+cid;
         Log.d("Url",url);
 
         JsonArrayRequest request = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {

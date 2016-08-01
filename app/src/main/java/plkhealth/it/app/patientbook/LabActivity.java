@@ -61,7 +61,7 @@ public class LabActivity extends AppCompatActivity {
         setTitle("ผลการตรวจเลือด");
         view_lab = (View)findViewById(R.id.layout_lab) ;
 
-        final String url_lab = Prefs.getString("api_url","")+"frontend/web/patient/lab?cid="+Prefs.getString("patient_cid","");
+        final String url_lab = Prefs.getString("api_url","")+"frontend/web/index.php/patient/lab?cid="+Prefs.getString("patient_cid","");
 
 
         mwebView = (WebView)findViewById(R.id.web_lab);

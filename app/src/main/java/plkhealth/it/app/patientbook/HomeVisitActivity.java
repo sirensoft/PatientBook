@@ -28,7 +28,7 @@ public class HomeVisitActivity extends AppCompatActivity {
 
     public void add_data(){
         String url = Prefs.getString("api_url", "");
-        final String url_input_visit = url.equals("")?"http://host/":url + "frontend/web/patient/home-visit-input";
+        final String url_input_visit = url.equals("")?"http://host/":url + "frontend/web/index.php/patient/home-visit-input";
         new Thread(new Runnable() {
             @Override
             public void run() {

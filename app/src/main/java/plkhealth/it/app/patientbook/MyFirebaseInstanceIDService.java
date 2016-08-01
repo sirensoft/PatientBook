@@ -10,6 +10,7 @@ import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.FirebaseInstanceIdService;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.pixplicity.easyprefs.library.Prefs;
 
 import java.io.IOException;
 
@@ -38,7 +39,7 @@ public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
         client.setTimeout(20000);
         String cid= "5650201060154";
         //String token = firebase_token;
-        String url = "http://203.157.118.124/api/frontend/web/media/update-token?cid="+cid+"&token="+token;
+        String url = Prefs.getString("api_url","")+"frontend/web/index.php/media/update-token?cid="+cid+"&token="+token;
         client.get(url, new AsyncHttpResponseHandler() {
             @Override
             public void onStart() {

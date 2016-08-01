@@ -117,7 +117,7 @@ public class PersonalInfoActivity extends AppCompatActivity {
         webView.loadData(Prefs.getString("personal_info", ""), "text/html; charset=utf-8", "UTF-8");
 
 
-        final String url_info = ApiUrl+"frontend/web/patient/info?cid="+Prefs.getString("patient_cid","");
+        final String url_info = ApiUrl+"frontend/web/index.php/patient/info?cid="+Prefs.getString("patient_cid","");
         Log.d("ptinfo",url_info);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_personal_info);
@@ -128,7 +128,7 @@ public class PersonalInfoActivity extends AppCompatActivity {
                 loadNewData(url_info);
                 Log.d("ptinfo",url_info);
                 Glide.with(getApplicationContext())
-                        .load(ApiUrl + "frontend/web/patient/image?cid="+Prefs.getString("patient_cid",""))
+                        .load(ApiUrl + "frontend/web/index.php/patient/image?cid="+Prefs.getString("patient_cid",""))
                         .placeholder(R.drawable.who)
                         .into(img_personal_info);
 
@@ -136,7 +136,7 @@ public class PersonalInfoActivity extends AppCompatActivity {
         });
 
         Glide.with(getApplicationContext())
-                .load(ApiUrl + "frontend/web/patient/image?cid="+Prefs.getString("patient_cid",""))
+                .load(ApiUrl + "frontend/web/index.php/patient/image?cid="+Prefs.getString("patient_cid",""))
                 .placeholder(R.drawable.who)
                 .into(img_personal_info);
 
