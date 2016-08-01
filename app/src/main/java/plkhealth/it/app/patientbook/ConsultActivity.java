@@ -104,7 +104,7 @@ public class ConsultActivity extends AppCompatActivity {
 
 
         txt_chat = (EditText) findViewById(R.id.txt_chat);
-        list_chat_url = Prefs.getString("api_url", "") + "frontend/web/chat/list?cid=" + Prefs.getString("patient_cid", "");
+        list_chat_url = Prefs.getString("api_url", "") + "frontend/web/index.php/chat/list?cid=" + Prefs.getString("patient_cid", "");
         mwebView.loadUrl(list_chat_url);
         mwebView.setWebViewClient(new MyWebViewClient());
 

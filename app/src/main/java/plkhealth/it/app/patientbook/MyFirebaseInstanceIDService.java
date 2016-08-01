@@ -37,7 +37,8 @@ public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
 
         AsyncHttpClient client = new AsyncHttpClient();
         client.setTimeout(20000);
-        String cid= "5650201060154";
+        //String cid= "5650201060154";
+        String cid = Prefs.getString("patient_cid","");
         //String token = firebase_token;
         String url = Prefs.getString("api_url","")+"frontend/web/index.php/media/update-token?cid="+cid+"&token="+token;
         client.get(url, new AsyncHttpResponseHandler() {

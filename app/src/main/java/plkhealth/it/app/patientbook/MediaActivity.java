@@ -226,7 +226,7 @@ public class MediaActivity extends AppCompatActivity {
     @Override
     public void onDestroy(){
 
-        String url = Prefs.getString("api_url","")+"frontend/web/media/check-media?cid="+Prefs.getString("patient_cid","");
+        String url = Prefs.getString("api_url","")+"frontend/web/index.php/media/check-media?cid="+Prefs.getString("patient_cid","");
         StringRequest stringRequest = new StringRequest(com.android.volley.Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
