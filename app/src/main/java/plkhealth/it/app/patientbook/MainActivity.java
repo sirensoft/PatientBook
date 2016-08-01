@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         if(Prefs.getString("api_url","").equals("")){
             return;
         }
-        String url = Prefs.getString("api_url", "") + "frontend/web/patient/check-active?cid=" + Prefs.getString("patient_cid", "");
+        String url = Prefs.getString("api_url", "") + "frontend/web/index.php/patient/check-active?cid=" + Prefs.getString("patient_cid", "");
         StringRequest stringRequest = new StringRequest(com.android.volley.Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
         final String firebase_token = FirebaseInstanceId.getInstance().getToken();
         Prefs.putString("token", firebase_token);
         Log.d("token", firebase_token);
-        final String url_update_token = Prefs.getString("api_url", "") + "frontend/web/media/update-token";
+        final String url_update_token = Prefs.getString("api_url", "") + "frontend/web/index.php/media/update-token";
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -143,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
         if(Prefs.getString("api_url","").equals("")){
             return;
         }
-        String url = Prefs.getString("api_url", "") + "frontend/web/patient/appoint?cid="+cid;
+        String url = Prefs.getString("api_url", "") + "frontend/web/index.php/patient/appoint?cid="+cid;
         Log.d("Url",url);
 
         JsonArrayRequest request = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
@@ -194,7 +194,7 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        String url = Prefs.getString("api_url","")+"frontend/web/media/check-media?cid="+Prefs.getString("patient_cid","");
+        String url = Prefs.getString("api_url","")+"frontend/web/index.php/media/check-media?cid="+Prefs.getString("patient_cid","");
         StringRequest stringRequest = new StringRequest(com.android.volley.Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
